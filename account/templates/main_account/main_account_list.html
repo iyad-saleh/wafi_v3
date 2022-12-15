@@ -1,0 +1,58 @@
+<div id="accounts">
+    <button hx-get="{% url 'add_main_account' pk=account_type.pk %}" hx-target="#dialog" class="btn btn-primary">
+        Add a Account {{ account_type }}
+    </button>
+     <a class="btn btn-primary"   href="{% url 'account_type_index'  %}">
+
+        All Accounts
+    </a>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table custom-table m-0">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>parent</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for main_account in main_accounts %}
+                                    <tr {% if not main_account.parent %} class="table-active" {% else %} class="table-success"{% endif %}>
+
+
+                                        <td>{{ main_account.code }} </td>
+                                        <td>{{ main_account.name }} </td>
+                                         <td> {% if main_account.parent %}
+                                               {{ main_account.parent }}
+                                             {% else %}
+                                              {{ account_type }}
+                                             {% endif %}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_main_account' pk=main_account.pk %}" hx-target="#dialog">Edit</button>
+                                            <button class="btn btn-primary btn-sm" hx-get="{% url 'add_sub_account' pk=main_account.pk %}" hx-target="#dialog">Add</button>
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr class="table-active">
+                                        <td colspan="12" class="hiddenRow">
+                                            No Main Account
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

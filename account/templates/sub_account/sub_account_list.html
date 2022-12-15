@@ -1,0 +1,19 @@
+{% for sub_account in main_account.sub_account_set.all %}
+  <tr >
+
+
+      <td>{{ sub_account.code }} </td>
+      <td>{{ sub_account.name }} </td>
+      <td>{{ sub_account.coin }} </td>
+      <td>{{ sub_account.balance }} </td>
+
+
+
+  </tr>
+  {% empty %}
+  <tr class="table-active">
+      <td colspan="12" class="hiddenRow">
+          No Sub Account
+      </td>
+  </tr>
+  {% endfor %}

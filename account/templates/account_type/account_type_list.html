@@ -1,0 +1,83 @@
+{% for account in accounts %}
+<div class="  col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12 off">
+    <div class="card lobipanel-minimize">
+        <div class="card-header">
+            <div class="card-title">{{ account.name }}</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-sm">
+               <caption>{{ account.name  }}</caption>
+                <thead>
+                    <tr>
+                        <th>code</th>
+                        <th>name</th>
+                        <th>nature</th>
+                        <th>final</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ account.code }}</td>
+                        <!-- <td >{{ forloop.counter }}</td> -->
+                        <td>{{ account.name }}</td>
+                        <td>{{ account.get_nature_display }}</td>
+                        <td>{{ account.get_final_display }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"
+                            hx-get="{% url 'edit_account_type' pk=account.pk %}"
+                            hx-target="#dialog">Edit</button>
+                            <button class="btn btn-primary btn-sm"
+
+                            hx-get="{% url 'main_account_list' pk=account.pk %}"
+                             hx-push-url="{% url 'main_account_list' pk=account.pk %}"
+                            hx-target="#accounts">Details</button>
+                            <button class="btn btn-primary btn-sm"
+
+                            hx-get="{% url 'add_main_account' pk=account.pk %}"
+                            hx-target="#dialog">ADD</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <th>code</th>
+                                    <th>name</th>
+                                    <th>parent</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for main_account in account.Main_children.all %}
+                                <tr {% if not main_account.parent %} class="table-active" {% else %} class="table-success"{% endif %}>
+                                    <td>{{ main_account.code }} </td>
+                                    <td>{{ main_account.name }} </td>
+                                   <td> {% if main_account.parent %}
+                                               {{ main_account.parent }}
+                                         {% else %}
+                                             {{ account }}
+                                         {% endif %}
+                                        </td>
+                                    <td><button class="btn btn-primary btn-sm" hx-get="{% url 'edit_main_account' pk=main_account.pk %}" hx-target="#dialog">Edit</button></td>
+                                    {% if main_account.is_leaf_node %}
+                                    <td>
+                                      <button class="btn btn-primary btn-sm"
+                                      hx-get="{% url 'main_account_details' pk=main_account.pk %}" hx-target="#accounts"
+                                      hx-push-url="{% url 'main_account_details' pk=main_account.pk %}"
+                                      >
+                                    Details ({{main_account.sub_account_set.count}})
+                                  </button>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endfor %}

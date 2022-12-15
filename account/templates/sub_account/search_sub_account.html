@@ -1,0 +1,25 @@
+<!--  {% for sub_account in sub_accounts %}
+ <option value={{sub_account.code}}-{{sub_account.name}}  > {{sub_account.code}}-{{sub_account.name}}  </option>
+
+{% endfor %}
+ -->
+
+
+
+
+    <ul class="list-group col-xs-12">
+    {% for sub_account in sub_accounts %}
+        <li class="list-group-item d-flex  align-items-center">
+
+            <span class="badge badge-success badge-pill"
+                style="cursor: pointer ;font-size: inherit;width: 100%;"
+                hx-get="{% url 'query_sub_account' %}"
+                hx-vals='{"hidden_id":"{{hidden_id}}","name": "{{ sub_account.name }}","code":"{{ sub_account.code }}"}'
+                hx-target="#id_journal_set-{{ hidden_id }}-account"> {{ sub_account.name }} {{ sub_account.code }}</span>
+        </li>
+
+     {% empty %}
+    <p>No search sub_accounts</p>
+    {% endfor %}
+    </ul>
+

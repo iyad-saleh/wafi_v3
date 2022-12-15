@@ -1,0 +1,55 @@
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<!-- Modal -->
+
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"  >&times;</span>
+                </button>
+                <h5 class="modal-title  " id="customModalTwoLabel">Account</h5>
+            </div>
+            <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}" class="col-form-label">Name:</label>
+                        {% render_field form.name class="form-control" placeholder="Asset" %}
+                        <div class="invalid-feedback">{{ form.name.errors|first }}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.code.id_for_label }}" class="col-form-label">Code:</label>
+                        {% render_field form.code class="form-control" placeholder=code %}
+                        <div class="invalid-feedback">{{ form.code.errors|first }}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.nature.id_for_label }}" class="col-form-label">nature:</label>
+                        {% render_field form.nature class="form-control" placeholder=nature %}
+                        <div class="invalid-feedback">{{ form.nature.errors|first }}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.final.id_for_label }}" class="col-form-label">final:</label>
+                        {% render_field form.final class="form-control" placeholder=final %}
+                        <div class="invalid-feedback">{{ form.final.errors|first }}</div>
+                    </div>
+                </div>
+                <div class="modal-footer custom">
+                    <div class="left-side">
+                        <button type="button" class="btn btn-link danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="divider"></div>
+                    {% if account %}
+                    <button type="button" class="btn btn-link danger" hx-confirm="Are you sure you wish to delete {{ account.name }}?" hx-post="{% url 'remove_account_type' pk=account.pk %}" @click="open = ! open">Remove</button>
+                    {% else %}
+                    <input type="reset" class="btn btn-link success" value="Reset">
+                    {% endif %}
+                    <div class="divider"></div>
+                    <div class="right-side">
+                        <button type="submit" class="btn btn-link success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+{% endwith %}

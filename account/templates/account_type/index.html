@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li class="breadcrumb-item ">
+    <a class="black-text active-2" href="{% url 'account_type_index' %}">
+        <span class="icon-accessibility">Accounts</span>
+    </a>
+</li>
+{% endblock %}
+
+{% block stylesheets %}
+    <style type="text/css">
+    th {text-align: center;}
+    td {text-align: center;}
+
+    .hiddenRow {
+        padding: 0 !important;
+    }
+    </style>
+<link rel="stylesheet" href="{% static 'vendor/lobipanel/css/lobipanel.css' %}" />
+{% endblock stylesheets %}
+{% block content %}
+
+
+<div id="accounts">
+    <div class="row gutters">
+  <div class="col-3"> <button hx-get="{% url 'add_account_type' %}" hx-target="#dialog" class="btn btn-primary">
+        Add a Account
+    </button> </div>
+
+<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+    <div class="social-tile">
+        <div class="social-stats">
+            <h3>ASSETS =LIABILITIES +EQUITY +income -EXPENSES</h3>
+        </div>
+    </div>
+</div>
+
+
+
+
+       </div>
+
+
+
+
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <!-- Row start -->
+            <div class="row gutters" hx-trigger="load, accountListChanged from:body" hx-get="{% url 'account_type_list' %}" hx-target="this" hx-indicator="#spinner">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" class="spinner-border" id="spinner" role="status">
+                    <div class="card lobipanel-minimize">
+                        <div class="card-header">
+                            <div class="card-title">Loading</div>
+                        </div>
+                        <div class="card-body">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<!-- jQuery UI -->
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<!-- Lobipanel -->
+<script src="{% static 'vendor/lobipanel/js/lobipanel.js' %}"></script>
+<script src="{% static 'vendor/lobipanel/js/lobipanel-custom.js' %}"></script>
+{% endblock javascripts %}

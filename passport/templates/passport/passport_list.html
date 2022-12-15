@@ -1,0 +1,20 @@
+{% for passport in passports %}
+<tr id="passport-{{ passport.pk }}" class="passport-row">
+
+<td>{{ passport.first_name  }}</td>
+<td>{{ passport.last_name  }}</td>
+<td>{{ passport.father_name  }}</td>
+<td>{{ passport.mother_name  }}</td>
+<td>{{ passport.birth_place|truncatechars:10  }}/{{ passport.birth_date|date:"Y-m-d"   }}</td>
+<td>{{ passport.passport_number  }}</td>
+<td>{{ passport.issue_date|date:"Y-m-d"   }}</td>
+<td>{{ passport.nationality|truncatechars:10  }}</td>
+<td>{{ passport.get_gender_display  }}</td>
+<td>{{ passport.phone  }}</td>
+
+
+  <td>
+    <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_passport' pk=passport.pk %}" hx-target="#passportform" hx-swap="outerHTML">Edit</button>
+  </td>
+</tr>
+{% endfor %}

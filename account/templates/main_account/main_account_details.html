@@ -1,0 +1,39 @@
+<div id="accounts">
+    <button hx-get="{% url 'add_sub_account' pk=main_account.pk %}" hx-target="#dialog" class="btn btn-primary">
+        Add a Sub Account
+    </button>
+     <a class="btn btn-primary"   href="{% url 'account_type_index'  %}">
+
+        All Accounts
+    </a>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table custom-table m-0">
+                              <caption>{{ main_account  }}</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>Coin</th>
+                                        <th>balance</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody hx-trigger="load, sub_accountListChanged from:body" hx-get="{% url 'sub_account_list' pk=main_account.pk %}" hx-target="this" hx-indicator="#spinner">
+                                    {% include 'sub_account/sub_account_list.html' %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

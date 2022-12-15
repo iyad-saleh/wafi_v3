@@ -1,0 +1,23 @@
+<input   type="hidden"
+            id="id_journal_set-{{ hidden_id }}-account"
+            name="journal_set-{{ hidden_id }}-account"
+            required value="{{sub_account.id}}"
+            />
+
+<input   type="search"
+            id="id_journal_set-{{hidden_id}}-account--"
+            name="sub_account"
+            value="{{sub_account.code}}-{{sub_account.name}}"
+            autocomplete="off"
+            hx-get="{% url 'search_sub_account' %}"
+            hx-vals='{"hidden_id": "{{ hidden_id }}"}'
+            hx-target='#sub_accounts_list{{ hidden_id }}'
+            hx-trigger="keyup changed delay:250ms"
+             placeholder="type code or name"
+             class="form-control" required
+             hx-swap-oob="true"
+            />
+
+
+
+<div id="sub_accounts_list{{ hidden_id }}" style=" position: absolute;   z-index: 99;"  hx-swap-oob="true"></div>

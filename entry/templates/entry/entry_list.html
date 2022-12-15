@@ -1,0 +1,28 @@
+{% load i18n %}
+
+{% for entry in Entries %}
+<tr id="entry-{{ entry.pk }}" class="row">
+
+    <td class="col-sm-1" >{{ entry.id  }}</td>
+    <td class="col-sm-6"   >{{ entry.narration|truncatechars:40  }}</td>
+    <td class="col-sm-1" >{{ entry.balance  }}</td>
+    <td class="col-sm-1" >{{ entry.author  }}</td>
+    <td class="col-sm-1" >{{ entry.updated_at|date:"Y-m-d"   }}</td>
+    <td class="col-sm-2" >
+        <a class="btn btn-primary"   href="{% url 'entry_detail' pk=entry.pk %}">
+
+      {{  entry.journal_set.count}} {% trans "Journals" %}
+    </a>
+
+  </td>
+</tr>
+{% endfor %}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<!-- Modal -->
+
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"  >&times;</span>
+                </button>
+                <h5 class="modal-title  " id="customModalTwoLabel">Main Account /{{account_type.name}}/ {{ main_account.name }}</h5>
+            </div>
+            <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
+                <div class="modal-body container">
+                    <div class="mb-3 row" >
+                    <div class="form-group col-md-4">
+                        <label for="{{ form.parent.id_for_label }}" class="col-form-label">parent</label>
+                        {% render_field form.parent class="form-control"   %}
+                        <div class="invalid-feedback">{{ form.parent.errors|first }}</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="{{ form.name.id_for_label }}" class="col-form-label">Name</label>
+                        {% render_field form.name class="form-control" placeholder="......" %}
+                        <div class="invalid-feedback">{{ form.name.errors|first }}</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="{{ form.code.id_for_label }}" class="col-form-label">Code</label>
+                        {% render_field form.code class="form-control" placeholder="سيتم اضافة رقم الحساب الاب تلقائياً"  %}
+                        <div class="invalid-feedback">{{ form.code.errors|first }}</div>
+                    </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer custom">
+                    <div class="left-side">
+                        <button type="button" class="btn btn-link danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="divider"></div>
+                    {% if main_account %}
+                    <button type="button" class="btn btn-link danger" hx-confirm="Are you sure you wish to delete {{ main_account.name }}?" hx-post="{% url 'remove_main_account' pk=main_account.pk %}" @click="open = ! open">Remove</button>
+                    {% else %}
+                    <input type="reset" class="btn btn-link success" value="Reset">
+                    {% endif %}
+                    <div class="divider"></div>
+                    <div class="right-side">
+                        <button type="submit" class="btn btn-link success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+{% endwith %}

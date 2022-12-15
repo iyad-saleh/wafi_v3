@@ -1,0 +1,50 @@
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+
+<tr class="row" id="journals-{{ id }}"   >
+
+  <td  class="col-sm-3" >
+      {% render_field form.account class="form-control "  %}
+
+      <div class="invalid-feedback">{{ form.account.errors|first }}</div>
+  </td>
+  <td  class="col-sm-2"   >
+        {% render_field form.amount class="form-control "  %}
+      <div class="invalid-feedback">{{ form.amount.errors|first }}</div>
+  </td>
+  <td  class="col-sm-1" >
+      {% render_field form.coin class="form-control "   %}
+      <div class="invalid-feedback">{{ form.coin.errors|first }}</div>
+  </td>
+  <td  class="col-sm-1" >
+      {% render_field form.direction class="form-control "   %}
+      <div class="invalid-feedback">{{ form.direction.errors|first }}</div>
+  </td>
+
+  <td  class="col-sm-5" >
+      {% render_field form.narration class="form-control " style="width:96%;" %}
+      <div class="invalid-feedback">{{ form.narration.errors|first }}</div>
+  </td>
+ </tr>
+
+{% endwith %}
+<script type="text/javascript">
+  document.getElementById("id_account").setAttribute("name","journal_set-{{id}}-account");
+  document.getElementById("id_account").setAttribute("id","id_journal_set-{{id}}-account");
+
+  document.getElementById("id_amount").setAttribute("name","journal_set-{{id}}-amount");
+  document.getElementById("id_amount").setAttribute("id","id_journal_set-{{id}}-amount");
+
+  document.getElementById("id_coin").setAttribute("name","journal_set-{{id}}-coin");
+  document.getElementById("id_coin").setAttribute("id","id_journal_set-{{id}}-coin");
+
+  document.getElementById("id_direction").setAttribute("name","journal_set-{{id}}-direction");
+  document.getElementById("id_direction").setAttribute("id","id_journal_set-{{id}}-direction");
+
+  document.getElementById("id_narration").setAttribute("name","journal_set-{{id}}-narration");
+  document.getElementById("id_narration").setAttribute("id","id_journal_set-{{id}}-narration");
+
+</script>
+
+<input type="hidden" name="journal_set-TOTAL_FORMS" value="{{ TOTAL_FORMS }}" id="id_journal_set-TOTAL_FORMS"  hx-swap-oob="true" >
+

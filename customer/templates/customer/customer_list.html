@@ -1,0 +1,75 @@
+
+{% for customer in customers %}
+<tr id="customer-{{ customer.pk }}" class="customer-row">
+
+    <td>{{ forloop.counter }}</td>
+
+    <td>{{ customer.account.name  }}</td>
+    <td>
+<div class="avatar sm" >
+        <img class="rounded"
+        src="{{ customer.logo.url }}">
+</div>
+    </td>
+    <td>
+
+
+{% if  customer.client %}
+<!-- <span class="badge badge-pill badge-primary mb-1">   cliem,n,mn,mn,nt </span> -->
+    <img src="../../../static/img/ch_img/icons8-inquiry-96color.png " class="circle  avatar sm" alt="clint">
+{% endif %}
+{% if  customer.aircompany %}
+    <img src="../../../static/img/ch_img/icons8-airplane-64c.png " class=" avatar sm  circle" alt="clint">
+{% endif %}
+{% if  customer.transportcompany %}
+<img src="../../../static/img/ch_img/icons8-bus-96.png " class=" avatar sm  circle" alt="clint">
+
+{% endif %}
+{% if  customer.seacompany %}
+<img src="../../../static/img/ch_img/icons8-water-transportation-96.png " class=" avatar sm  circle" alt="clint">
+
+{% endif %}
+{% if  customer.visacompany %}
+<img src="../../../static/img/ch_img/icons8-travel-visa-96.png " class=" avatar sm  circle" alt="clint">
+
+{% endif %}
+{% if  customer.backagecompany %}
+<img src="../../../static/img/ch_img/icons8-suitcase-96.png " class=" avatar sm  circle" alt="clint">
+{% endif %}
+{% if  customer.hotelcompany %}
+<img src="../../../static/img/ch_img/icons8-hotel-bed-96.png " class=" avatar sm  circle" alt="clint">
+{% endif %}
+{% if  customer.insurancecompany %}
+<img src="../../../static/img/ch_img/icons8-health-checkup-96.png " class=" avatar sm  circle" alt="clint">
+{% endif %}
+{% if  customer.documentcompany %}
+<img src="../../../static/img/ch_img/icons8-passport-96.png " class=" avatar sm  circle" alt="clint">
+{% endif %}
+{% if  customer.shippingcompany %}
+<img src="../../../static/img/ch_img/icons8-in-transit-96.png " class=" avatar sm  circle" alt="clint">
+{% endif %}
+    </td>
+    <td>{{ customer.address|truncatechars:7  }}</td>
+    <td>{{ customer.phoneNumber1|truncatechars:7  }}</td>
+    <td>{{ customer.tradeRecord|truncatechars:7  }}</td>
+    <td>{{ customer.email|truncatechars:7  }}</td>
+    <td>{{ customer.webSite|truncatechars:7  }}</td>
+    <td>{{ customer.updated_at|date:"Y-m-d"   }}</td>
+    <td>{{ customer.author  }}</td>
+    <td>
+        <div class="td-actions">
+            <!-- <button class="btn btn-info btn-rounded btn-sm">Edit</button> -->
+            <!-- <button class="btn btn-secondary btn-rounded btn-sm">Remove</button> -->
+        <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_customer' pk=customer.pk %}" hx-target="#customerform" hx-swap="outerHTML" >Edit</button>
+        </div>
+    </td>
+    <!-- <td>
+        <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_customer' pk=customer.pk %}" hx-target="#dialog">Edit</button>
+    </td>
+ -->
+</tr>
+{% endfor %}
+
+
+
+

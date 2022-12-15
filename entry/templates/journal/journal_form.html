@@ -1,0 +1,78 @@
+{% load static %}
+{% load widget_tweaks %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+<!-- Modal -->
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title  " id="customModalTwoLabel">
+            Edit Entr</h5>
+    </div>
+    <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
+        <div class="modal-body" style="  max-width: 100%;  overflow-x: auto;">
+            <div class="mb-3 row">
+                <div class="form-group col-md-9 mb-0">
+                    <label for="{{ e_form.narration.id_for_label }}" class="col-form-label">narration</label>
+                    {% render_field e_form.narration class="form-control" placeholder="......" %}
+                    <div class="invalid-feedback">{{ e_form.narration.errors|first }}</div>
+                </div>
+                <div class="form-group col-md-3 mb-0">
+                    <label for="{{ e_form.date.id_for_label }}" class="col-form-label">date</label>
+                    {% render_field e_form.date %}
+                    <div class="invalid-feedback">{{ e_form.date.errors|first }}</div>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="form-group col-md-12 mb-0"> {{ j_form.management_form }}
+                    <table class="table custom-table m-0" border=1>
+
+    <input type="hidden" name="journal_set-TOTAL_FORMS" value="6" id="id_journal_set-TOTAL_FORMS">
+    <input type="hidden" name="journal_set-INITIAL_FORMS" value="0" id="id_journal_set-INITIAL_FORMS">
+    <input type="hidden" name="journal_set-MIN_NUM_FORMS" value="4" id="id_journal_set-MIN_NUM_FORMS">
+    <input type="hidden" name="journal_set-MAX_NUM_FORMS" value="1000" id="id_journal_set-MAX_NUM_FORMS">
+                        <thead>
+                           <!--  {% for form in j_form %}
+                               {% if forloop.first %}
+                                  {% for field in form.visible_fields %}
+                                      <th>{{ field.label_tag }}</th>
+                                   {% endfor %}
+                                {% endif %}
+
+                              {% endfor %} -->
+                         </thead>
+                        <tbody>
+                            {% for form in j_form %}
+                                {% for field in form.visible_fields %}
+                                    <tr>
+                                        {% for field in form.visible_fields %}
+                                        <td>{{ field }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                 {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer custom">
+            <div class="left-side">
+                <button type="button" class="btn btn-link danger" data-dismiss="modal">Cancel</button>
+            </div>
+            <div class="divider"></div>
+            {% if sub_account %}
+            <button type="button" class="btn btn-link danger" hx-confirm="Are you sure you wish to delete {{ sub_account.name }}?" hx-post="{% url 'remove_main_account' pk=sub_account.pk %}" @click="open = ! open">Remove</button>
+            {% else %}
+            <input type="reset" class="btn btn-link success" value="Reset">
+            {% endif %}
+            <div class="divider"></div>
+            <div class="right-side">
+                <button type="submit" class="btn btn-link success">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endwith %}
