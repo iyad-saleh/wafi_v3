@@ -246,6 +246,9 @@ def add_sub_account(request,pk):
             sub_account = form.save(commit=False)
             sub_account.main_account= main_account
             sub_account.save()
+            coins =form.cleaned_data['coin']
+            for coin in coins:
+                sub_account.coin.add(coin)
             return HttpResponse(
                 status=204,
                 headers={
@@ -269,6 +272,59 @@ def add_sub_account(request,pk):
         'form': form,'account_type':account_type,'main_account':main_account
 
     })
+
+@login_required
+def edit_sub_account(request,pk):
+    sub_account = get_object_or_404(Sub_account,pk=pk)
+    main_account = sub_account.main_account
+    account_type =main_account.account_type
+
+    if request.method == "POST":
+        form = Sub_accountForm(request.POST, instance=sub_account)
+        if form.is_valid():
+            sub_account = form.save(commit=False)
+            sub_account.main_account= main_account
+            sub_account.save()
+            sub_account.coin.clear()
+            coins =form.cleaned_data['coin']
+            for coin in coins:
+                sub_account.coin.add(coin)
+            return HttpResponse(
+                status=204,
+                headers={
+                    'HX-Trigger': json.dumps({
+                        "sub_accountListChanged": None,
+                        "showMessage": f"{sub_account.name} updated."
+                    })
+                }
+            )
+        else:
+            return render(request, 'sub_account/sub_account_form.html', {
+        'form': form,'account_type':account_type ,'main_account':main_account })
+
+
+
+    else:
+        form = Sub_accountForm(instance=sub_account)
+
+
+    return render(request, 'sub_account/sub_account_form.html', {
+        'form': form,'account_type':account_type,'main_account':main_account,'sub_account':sub_account
+
+    })
+
+@login_required
+def remove_sub_account(request,pk):
+    account = get_object_or_404(Sub_account, pk=pk)
+    account.delete()
+    return HttpResponse(
+        status=204,
+        headers={
+            'HX-Trigger': json.dumps({
+                "sub_accountListChanged": None,
+                "showMessage": f"{account.name} deleted."
+            })
+        })
 
 
 def query_sub_account(request):

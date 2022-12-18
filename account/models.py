@@ -33,6 +33,9 @@ from django.dispatch import receiver
 #
 #Assets + Expenses = Liabilities + Revenues + Equity
 #
+#Debits add to expense and asset accounts and subtract from liability, revenue and equity balances,
+# while
+#credits subtract from expense and asset balances and add to liability, revenue and equity accounts.
 
 #ASSETS = LIABILITIES + EQUITY + income - EXPENSES
 class Account_type(models.Model):#Assets liabilites Expenses income copyrights
@@ -70,8 +73,7 @@ class Sub_account(models.Model):
     main_account =TreeForeignKey('Main_account',   db_index=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=8, unique=True)
-    coin = models.ForeignKey(Coin,null=True,blank=True, on_delete=models.SET_NULL)
-
+    coin =  models.ManyToManyField(Coin, default=Coin.objects.filter(active=True).first().id)
     dept  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
     credit  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
     balance =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#

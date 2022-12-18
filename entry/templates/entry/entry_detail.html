@@ -29,10 +29,11 @@
 
 <div class="jumbotron  mt-0" >
                                 <h1 class="display-6 text-primary">{% trans "narration" %} </h1>
-                                <p class="lead">{% trans "Entry Date:" %}  {{entry.date}}</p>
+                                <p class="lead">{% trans "since" %}: {{entry.date|timesince}}</p>
+                                <p class="lead">{% trans "Entry Date:" %}  {{entry.date}} </p>
                                 <p class="lead">{{entry.narration}}</p>
                                 <div class="mb-3">{% trans "Entry Balance:" %}{{entry.balance}}</div>
-                                <button hx-get="{% url 'add_entry' %}" hx-target="#dialog" class="btn btn-primary">
+                                <button hx-get="{% url 'reverse_entry' pk=entry.pk %}" hx-target="#dialog" class="btn btn-primary">
        {% trans "Revers  Entry" %}
        </button>
                             </div>

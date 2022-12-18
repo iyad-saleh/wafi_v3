@@ -9,6 +9,7 @@ urlpatterns = [
     path('entry/add', add_entry, name='add_entry'),
     # path('entry/<int:pk>/remove', remove_entry, name='remove_entry'),
     path('entry/<int:pk>/detail', entry_detail, name='entry_detail'),
+    path('entry/<int:pk>/reverse', reverse_entry, name='reverse_entry'),
 
 
     path('create_journal_form/', create_journal_form,name='create_journal_form'),

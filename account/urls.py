@@ -21,4 +21,6 @@ urlpatterns = [
     path('search_sub_account/', search_sub_account, name='search_sub_account'),
     path('sub_account_list/<int:pk>/', sub_account_list, name='sub_account_list'),
     path('add_sub_account/<int:pk>/add', add_sub_account, name='add_sub_account'),
+    path('edit_sub_account/<int:pk>/edit', edit_sub_account, name='edit_sub_account'),
+    path('remove_sub_account/<int:pk>/remove', remove_sub_account, name='remove_sub_account'),
 ]

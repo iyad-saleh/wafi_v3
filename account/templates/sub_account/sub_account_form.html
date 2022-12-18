@@ -36,7 +36,7 @@
                     </div>
                     <div class="divider"></div>
                     {% if sub_account %}
-                    <button type="button" class="btn btn-link danger" hx-confirm="Are you sure you wish to delete {{ sub_account.name }}?" hx-post="{% url 'remove_main_account' pk=sub_account.pk %}" @click="open = ! open">Remove</button>
+                    <button type="button" class="btn btn-link danger" hx-confirm="Are you sure you wish to delete {{ sub_account.name }}?" hx-post="{% url 'remove_sub_account' pk=sub_account.pk %}" @click="open = ! open">Remove</button>
                     {% else %}
                     <input type="reset" class="btn btn-link success" value="Reset">
                     {% endif %}

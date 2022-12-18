@@ -28,7 +28,11 @@ def balance_entry(j_form, balance=True,msg=''):
     # print('balance_entrybalance_entrybalance_entry')
     temp ={}#amount  direction   coin
     for j in j_form.cleaned_data:
-
+        print(j['account'].coin.all)
+        if not  j['coin'] in j['account'].coin.all():
+            msg =str( j['account'].name)+'/  curruncy is not same  / '+  str(j['coin'].short_title)
+            balance=False
+            return (balance, msg)
         if j['coin'].short_title in temp:
             temp[j['coin'].short_title] += float(j['amount'])*float(j['direction'])
         else:
@@ -118,6 +122,91 @@ def add_entry(request):
 def entry_detail(request,pk):
     entry = get_object_or_404(Entry,pk=pk)
     return render(request,'entry/entry_detail.html',{'entry':entry})
+
+
+def reverse_entry(request,pk):
+    balance = True
+    msg=''
+    entry = get_object_or_404(Entry,pk=pk)
+    if request.method == "POST":
+        TOTAL_FORMS = request.POST.get('journal_set-TOTAL_FORMS')
+        # print('TOTAL_FORMS' ,TOTAL_FORMS)
+        e_form = EntryForm(request.POST)
+        j_form = JournalFormSet(request.POST)
+        # print('e_form', e_form)
+        if e_form.is_valid() and j_form.is_valid():
+
+            # print('j_form.cleaned_data  : ',j_form.cleaned_data)
+            balance, msg = balance_entry(j_form,balance,msg)
+
+            if not balance:
+                # print("if not balance")
+                return render(request, 'entry/entry_form.html', {
+                        'e_form': e_form,'j_form':j_form,'balance':balance,'msg':msg ,'TOTAL_FORMS':TOTAL_FORMS })
+
+            entry = e_form.save(commit=False)
+            entry.author=request.user
+            entry.save()
+            journals = j_form.save(commit=False)
+            for journal in journals:
+                journal.entry=entry
+                journal.author=request.user
+                if not journal.narration:
+                    journal.narration = entry.narration
+                journal.save()
+            entry.balance=True
+            entry.save()
+            return HttpResponse(
+                status=204,
+                headers={
+                    'HX-Trigger': json.dumps({
+                        "entryListChanged": None,
+                        "showMessage": f"{entry.id} Added."
+                    })
+                }
+            )
+        else:
+            print('not is_valid')
+            print(e_form.errors)
+            print(j_form.errors)
+            return render(request, 'entry/entry_form.html', {
+        'e_form': e_form,'j_form':j_form ,'balance':balance,'TOTAL_FORMS':TOTAL_FORMS ,'msg':msg })
+
+
+
+    else:
+        e_form = EntryForm()
+        e_form.initial['narration']= entry.narration+ '--REVERSE--'
+        initial=[]
+        for journal in entry.journal_set.all():
+
+            initial.append(
+
+                {'account' :journal.account,
+                'amount':journal.amount,
+                'coin':journal.coin,
+                'direction':str(int(journal.direction)*-1),
+                'narration':journal.narration +'--REVERSE--'
+
+             }
+            )
+
+        j_form = JournalFormSet(initial=initial)
+
+        TOTAL_FORMS= j_form.management_form.initial['TOTAL_FORMS']
+
+
+        for form in j_form:
+            form.initial['coin']= Coin.objects.filter(active=True).first()
+
+
+
+    return render(request, 'entry/entry_form.html', {
+        'e_form': e_form,'j_form':j_form,'balance':balance,'TOTAL_FORMS':TOTAL_FORMS
+
+    })
+
+
 
 
 def remove_entry(request):

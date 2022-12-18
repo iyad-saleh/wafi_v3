@@ -24,8 +24,8 @@ class Entry( BaseModel,SoftDeleteModel):
 class Journal(BaseModel, SoftDeleteModel):
 
     # journal_2    = models.OneToOneField('self', on_delete=models.SET_NULL, blank=True, null=True)
-    entry   = models.ForeignKey(Entry, on_delete=models.CASCADE )
-    account = models.ForeignKey(Sub_account, on_delete=models.CASCADE )
+    entry   = models.ForeignKey(Entry, on_delete=models.PROTECT )
+    account = models.ForeignKey(Sub_account, on_delete=models.PROTECT )
     # account_dept =  models.ForeignKey(Sub_account, on_delete=models.CASCADE,related_name='account_dept' )
     amount     =models.PositiveIntegerField(default=0)
     direction  =models.CharField(max_length=3, choices=(('1','debit'),
