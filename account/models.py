@@ -41,6 +41,7 @@ from django.dispatch import receiver
 class Account_type(models.Model):#Assets liabilites Expenses income copyrights
     code = models.CharField(max_length=2, unique=True)
     name = models.CharField(max_length=255, unique=True)
+    ar_name = models.CharField(max_length=255, null=True, blank=True)
     nature= models.CharField(max_length=3, choices=(
                                             ('-1','debit'),
                                             ('1','credit')))
@@ -58,6 +59,7 @@ class Main_account(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,on_delete=models.SET_NULL)
     code = models.CharField(max_length=5)
     name = models.CharField(max_length=255, unique=True)
+    ar_name = models.CharField(max_length=255, null=True, blank=True)
 
     # coin = models.ForeignKey(Coin,null=True,blank=True, on_delete=models.SET_NULL)
     class MPTTMeta:
@@ -72,6 +74,8 @@ class Main_account(MPTTModel):
 class Sub_account(models.Model):
     main_account =TreeForeignKey('Main_account',   db_index=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
+    ar_name = models.CharField(max_length=255, null=True, blank=True)
+
     code = models.CharField(max_length=8, unique=True)
     coin =  models.ManyToManyField(Coin, default=Coin.objects.filter(active=True).first().id)
     dept  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#

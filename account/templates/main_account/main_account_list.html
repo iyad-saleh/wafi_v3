@@ -1,3 +1,5 @@
+
+{% load i18n %}
 <div id="accounts">
     <button hx-get="{% url 'add_main_account' pk=account_type.pk %}" hx-target="#dialog" class="btn btn-primary">
         Add a Account {{ account_type }}
@@ -18,6 +20,7 @@
                                     <tr>
                                         <th>Code</th>
                                         <th>Name</th>
+                                        <th>Arabic Name</th>
                                         <th>parent</th>
                                         <th></th>
                                     </tr>
@@ -29,6 +32,7 @@
 
                                         <td>{{ main_account.code }} </td>
                                         <td>{{ main_account.name }} </td>
+                                        <td>{{ main_account.ar_name }} </td>
                                          <td> {% if main_account.parent %}
                                                {{ main_account.parent }}
                                              {% else %}

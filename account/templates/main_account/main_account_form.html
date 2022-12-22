@@ -1,3 +1,5 @@
+
+{% load i18n %}
 {% load widget_tweaks %}
 {% with WIDGET_ERROR_CLASS='is-invalid' %}
 <!-- Modal -->
@@ -14,20 +16,28 @@
             <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
                 <div class="modal-body container">
                     <div class="mb-3 row" >
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                         <label for="{{ form.parent.id_for_label }}" class="col-form-label">parent</label>
                         {% render_field form.parent class="form-control"   %}
                         <div class="invalid-feedback">{{ form.parent.errors|first }}</div>
                     </div>
-                    <div class="form-group col-md-4">
+
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.code.id_for_label }}" class="col-form-label">Code</label>
+                        {% render_field form.code class="form-control" placeholder="سيتم اضافة رقم الحساب الاب تلقائياً"  %}
+                        <div class="invalid-feedback">{{ form.code.errors|first }}</div>
+                    </div>
+                    </div>
+                     <div class="mb-3 row" >
+                        <div class="form-group col-md-6">
                         <label for="{{ form.name.id_for_label }}" class="col-form-label">Name</label>
                         {% render_field form.name class="form-control" placeholder="......" %}
                         <div class="invalid-feedback">{{ form.name.errors|first }}</div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="{{ form.code.id_for_label }}" class="col-form-label">Code</label>
-                        {% render_field form.code class="form-control" placeholder="سيتم اضافة رقم الحساب الاب تلقائياً"  %}
-                        <div class="invalid-feedback">{{ form.code.errors|first }}</div>
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.ar_name.id_for_label }}" class="col-form-label">ar_Name</label>
+                        {% render_field form.ar_name class="form-control" placeholder="......" %}
+                        <div class="invalid-feedback">{{ form.ar_name.errors|first }}</div>
                     </div>
                     </div>
 

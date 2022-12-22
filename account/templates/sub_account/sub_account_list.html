@@ -1,9 +1,13 @@
+
+{% load i18n %}
+
 {% for sub_account in main_account.sub_account_set.all %}
   <tr >
 
 
       <td>{{ sub_account.code }} </td>
       <td>{{ sub_account.name }} </td>
+      <td>{{ sub_account.ar_name }} </td>
       <td>
 
          {% for coin in sub_account.coin.all %}
@@ -17,7 +21,7 @@
       <td>{{ sub_account.balance }} </td>
       <td>
         <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_sub_account' pk=sub_account.pk %}" hx-target="#dialog">Edit</button>
-
+<a class="btn btn-primary btn-sm" href ="{% url 'sub_account_journal' pk=sub_account.pk %}" >Journals</a>
          </td>
 
 

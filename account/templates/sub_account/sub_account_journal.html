@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block breadcrumbs %}
+<li class="breadcrumb-item ">
+    <a class="black-text active-2" href="{% url 'account_type_index' %}">
+        <span class="icon-accessibility">Accounts</span>
+    </a>
+</li>
+<li class="breadcrumb-item ">
+    <a class="black-text active-2" href="{% url 'main_account_details' pk=account.main_account.id %}">
+        <span class="icon-accessibility">{{ account.main_account }}</span>
+    </a>
+</li>
+{% endblock %}
+{% block content %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <!-- Row start -->
+        <div class="row gutters">
+<div class="col-lg-2 col-md-2 col-sm-12">
+                            <div class="pricing-plan">
+                                <div class="pricing-header">
+                                    <h4 class="pricing-title">{% trans "journals" %}</h4>
+                                    {% for key, value in total.items  %}
+                                        {% if  value < 0 %}
+                                         <div class="pricing-save" style="color: #cf1212;">{{key }}: {{value}}</div>
+                                        {% else %}
+                                        <div class="pricing-save">{{key }}: {{value}}</div>
+                                        {% endif %}
+                                    {% endfor  %}
+
+                                </div>
+                                <ul class="pricing-features">
+                                    <li>{{ account.name }}</li>
+                                    <li> main:{{ account.main_account.name }} </li>
+                                    <li>Code : {{ account.code }}</li>
+                                    <li>Journals Count : {{ journals_list.count }}</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-1">id</th>
+                                    <th class="col-sm-1">Entry_id</th>
+                                    <th class="col-sm-2">Entry</th>
+                                    <th class="col-sm-1">amount</th>
+                                    <th class="col-sm-1">coin</th>
+                                    <th class="col-sm-1">direction</th>
+                                    <th class="col-sm-4">narration</th>
+                                    <th class="col-sm-1">author</th>
+                                    <th class="col-sm-1">Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for journal in journals %}
+                                <tr>
+                                    <td class="col-sm-1">{{ journal.id }}</td>
+                                    <td class="col-sm-1">{{ journal.entry.id }}</td>
+                                    <td class="col-sm-2">{{ journal.entry.narration }}</td>
+                                    <td class="col-sm-1">{{ journal.amount }}</td>
+                                    <td class="col-sm-1">{{ journal.coin }}</td>
+                                    <td class="col-sm-1">{{ journal.get_direction_display }}</td>
+                                    <td class="col-sm-3">{{ journal.narration }}</td>
+                                    <td class="col-sm-1">{{ journal.author }}</td>
+                                    <td class="col-sm-1">{{ journal.updated_at|date:"Y-m-d" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gutters">
+            <div class="col-sm-4 ">
+                {% if journals.has_other_pages %}
+                {% if journals.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ journals.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% for num in journals.paginator.page_range %}
+                {% if journals.number == num %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > journals.number|add:'-3' and num < journals.number|add:'3' %} <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if journals.has_next %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ journals.next_page_number }}">Next</a>
+                    <a class="btn btn-outline-info mb-4" href="?page={{ journals.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

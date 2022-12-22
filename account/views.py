@@ -9,6 +9,7 @@ from account.forms import Account_typeForm,Main_accountForm,Sub_accountForm
 from .models import Account_type, Main_account, Sub_account
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from entry.models import Journal
 # from django.contrib.auth.decorators import user_passes_test
 # is_MANAGER
 # is_RESERVATION
@@ -254,6 +255,7 @@ def add_sub_account(request,pk):
                 headers={
                     'HX-Trigger': json.dumps({
                         "sub_accountListChanged": None,
+                        "accountListChanged": None,
                         "showMessage": f"{sub_account.name} Added."
                     })
                 }
@@ -353,4 +355,34 @@ def search_sub_account(request):
 
     return render(request, 'sub_account/search_sub_account.html',
         {'sub_accounts':sub_accounts,'hidden_id':hidden_id}
+    )
+
+
+@login_required
+def sub_account_journal(request,pk):
+    rows = request.GET.get('rows','20')
+    account = get_object_or_404(Sub_account, pk=pk)
+    journals_list = Journal.objects.filter(account=account)
+    total ={}#amount  direction   coin
+    print(journals_list)
+    for j in journals_list:
+        if j.coin.short_title in total:
+            total[j.coin.short_title] += float(j.amount)*float(j.direction)
+        else:
+            total[j.coin.short_title]=float(j.amount)*float(j.direction)
+
+    paginator = Paginator(journals_list, rows)
+    page = request.GET.get('page', 1)
+    try:
+        journals = paginator.page(page)
+    except PageNotAnInteger:
+        journals = paginator.page(1)
+    except EmptyPage:
+        journals = paginator.page(paginator.num_pages)
+    return render(request, 'sub_account/sub_account_journal.html',
+        {'journals':journals,
+        'account':account,
+        'page': page,
+        'total':total,
+        'journals_list':journals_list}
     )

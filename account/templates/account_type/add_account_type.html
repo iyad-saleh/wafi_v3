@@ -1,5 +1,6 @@
 <!-- {% load widget_tweaks %} -->
 <!-- {% with WIDGET_ERROR_CLASS='is-invalid' %} -->
+{% load i18n %}
 {% load crispy_forms_tags %}
 <div class="container">
 <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">

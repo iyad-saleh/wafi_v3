@@ -9,7 +9,9 @@ from international.models import Coin
 import math
 # from django_htmx.http import trigger_client_event
 from django.shortcuts import get_object_or_404
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
+from datetime import datetime
 
 @login_required
 def index(request):
@@ -18,11 +20,52 @@ def index(request):
 
 
 def entry_list(request):
+    search = request.GET.get('search','')
+    filter_all = request.GET.get('all','')
+    filter_narration = request.GET.get('narration','')
+    filter_id = request.GET.get('id','')
+    daterange = request.GET.get('daterange','')
+    Checkboxdaterange = request.GET.get('Checkboxdaterange','')
+    entry_list = Entry.objects.all()
+    if  search:
+        # print(request.GET)
+        if filter_all:
+            entry_list = entry_list.filter(Q(narration__icontains=search) | Q(id__icontains=search)).distinct()
+            print('filter_all',entry_list)
+        elif  filter_narration:
+            entry_list = entry_list.filter(narration__icontains=search).distinct()
+            print('filter_narration',entry_list)
+        elif filter_id:
+            entry_list = entry_list.filter(id__icontains=filter_id).distinct()
+            print('filter_id',entry_list)
+        if Checkboxdaterange:#12/06/2022 - 12/20/2022
+            print('Checkboxdaterange')
+            raw_start =daterange.split(' - ')[0].strip()
+            raw_end = daterange.split(' - ')[1].strip()
+            print(raw_start,raw_end)
+            start = datetime.strptime(raw_start, '%m/%d/%Y').date()
+            end =    datetime.strptime(raw_end, '%m/%d/%Y').date()
+            print(type(start),start)
+            print(type(end),end)
+            entry_list = entry_list.filter(Q(date__gte=start) & Q(date__lte=end)).distinct()
 
-    Entries = Entry.objects.all()
+    paginator = Paginator(entry_list, 20)
+    page = request.GET.get('page', 1)
+    try:
+        entries = paginator.page(page)
+    except PageNotAnInteger:
+        entries = paginator.page(1)
+    except EmptyPage:
+        entries = paginator.page(paginator.num_pages)
+    # print('entries',[e for  e in entries])
     return render(request, 'entry/entry_list.html', {
-        'Entries':Entries
+        'entries':entries,'page': page
     })
+
+
+
+
+
 
 def balance_entry(j_form, balance=True,msg=''):
     # print('balance_entrybalance_entrybalance_entry')

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
 
+{% load static %}
+{% load i18n %}
 {% block breadcrumbs %}
 <li class="breadcrumb-item ">
     <a class="black-text active-2" href="{% url 'account_type_index' %}">
@@ -26,13 +27,13 @@
 <div id="accounts">
     <div class="row gutters">
   <div class="col-3"> <button hx-get="{% url 'add_account_type' %}" hx-target="#dialog" class="btn btn-primary">
-        Add a Account
+       {% trans "Add a Account" %}
     </button> </div>
 
 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
     <div class="social-tile">
         <div class="social-stats">
-            <h3>ASSETS =LIABILITIES +EQUITY +income -EXPENSES</h3>
+            <h3>ASSETS =LIABILITIES +EQUITY +INCOME -EXPENSES</h3>
         </div>
     </div>
 </div>
@@ -53,10 +54,10 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" class="spinner-border" id="spinner" role="status">
                     <div class="card lobipanel-minimize">
                         <div class="card-header">
-                            <div class="card-title">Loading</div>
+                            <div class="card-title">{% trans "Loading" %}</div>
                         </div>
                         <div class="card-body">
-                            <span class="visually-hidden">Loading...</span>
+                            <span class="visually-hidden">{% trans "Loading" %}...</span>
                         </div>
                     </div>
                 </div>

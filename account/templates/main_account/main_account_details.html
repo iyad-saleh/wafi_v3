@@ -1,10 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+<li class="breadcrumb-item ">
+    <a class="black-text active-2" href="{% url 'account_type_index' %}">
+        <span class="icon-accessibility">Accounts</span>
+    </a>
+</li>
+<li class="breadcrumb-item ">
+    <a class="black-text active-2" href="#">
+        <span class="icon-accessibility">{{ main_account }}</span>
+    </a>
+</li>
+{% endblock %}
+
+
+
+
+{% block content %}
 <div id="accounts">
     <button hx-get="{% url 'add_sub_account' pk=main_account.pk %}" hx-target="#dialog" class="btn btn-primary">
-        Add a Sub Account
+       {% trans "Add a Sub Account" %}
     </button>
      <a class="btn btn-primary"   href="{% url 'account_type_index'  %}">
 
-        All Accounts
+       {% trans "All Accounts" %}
     </a>
     <div class="main-panel">
         <div class="content-wrapper">
@@ -17,11 +38,12 @@
                               <caption>{{ main_account  }}</caption>
                                 <thead>
                                     <tr>
-                                        <th>Code</th>
-                                        <th>Name</th>
-                                        <th>Coin</th>
-                                        <th>balance</th>
-                                        <th>Update</th>
+                                        <th>{% trans "Code" %}</th>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Arabic Name" %}</th>
+                                        <th>{% trans "Coin" %}</th>
+                                        <th>{% trans "balance" %}</th>
+                                        <th>{% trans "Update" %}</th>
 
 
 
@@ -38,3 +60,6 @@
         </div>
     </div>
 </div>
+
+
+{% endblock %}

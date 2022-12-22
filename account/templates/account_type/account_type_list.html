@@ -1,3 +1,4 @@
+{% load i18n %}
 {% for account in accounts %}
 <div class="  col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12 off">
     <div class="card lobipanel-minimize">
@@ -9,10 +10,11 @@
                <caption>{{ account.name  }}</caption>
                 <thead>
                     <tr>
-                        <th>code</th>
-                        <th>name</th>
-                        <th>nature</th>
-                        <th>final</th>
+                        <th>{% trans "code" %}</th>
+                        <th>{% trans "name" %}</th>
+                        <th>{% trans "Arabic_name" %}</th>
+                        <th>{% trans "nature" %}</th>
+                        <th>{% trans "final" %}</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -21,30 +23,32 @@
                         <td>{{ account.code }}</td>
                         <!-- <td >{{ forloop.counter }}</td> -->
                         <td>{{ account.name }}</td>
+                        <td>{{ account.ar_name }}</td>
                         <td>{{ account.get_nature_display }}</td>
                         <td>{{ account.get_final_display }}</td>
                         <td>
                             <button class="btn btn-primary btn-sm"
                             hx-get="{% url 'edit_account_type' pk=account.pk %}"
-                            hx-target="#dialog">Edit</button>
+                            hx-target="#dialog">{% trans "Edit" %}</button>
                             <button class="btn btn-primary btn-sm"
 
                             hx-get="{% url 'main_account_list' pk=account.pk %}"
                              hx-push-url="{% url 'main_account_list' pk=account.pk %}"
-                            hx-target="#accounts">Details</button>
+                            hx-target="#accounts">{% trans "Details" %}</button>
                             <button class="btn btn-primary btn-sm"
 
                             hx-get="{% url 'add_main_account' pk=account.pk %}"
-                            hx-target="#dialog">ADD</button>
+                            hx-target="#dialog">{% trans "ADD" %}</button>
                         </td>
                     </tr>
                     <tr>
                         <table class="table table-bordered table-sm">
                             <thead>
                                 <tr>
-                                    <th>code</th>
-                                    <th>name</th>
-                                    <th>parent</th>
+                                    <th>{% trans "code" %}</th>
+                                    <th>{% trans "name" %}</th>
+                                    <th>{% trans "Arabic_name" %}</th>
+                                    <th>{% trans "parent" %}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -53,21 +57,30 @@
                                 <tr {% if not main_account.parent %} class="table-active" {% else %} class="table-success"{% endif %}>
                                     <td>{{ main_account.code }} </td>
                                     <td>{{ main_account.name }} </td>
+                                    <td>{{ main_account.ar_name }} </td>
                                    <td> {% if main_account.parent %}
-                                               {{ main_account.parent }}
+                                               {{ main_account.parent }} {{ main_account.parent.ar_name }}
                                          {% else %}
-                                             {{ account }}
+                                             {{ account }} {{ account.ar_name }}
                                          {% endif %}
                                         </td>
                                     <td><button class="btn btn-primary btn-sm" hx-get="{% url 'edit_main_account' pk=main_account.pk %}" hx-target="#dialog">Edit</button></td>
                                     {% if main_account.is_leaf_node %}
                                     <td>
-                                      <button class="btn btn-primary btn-sm"
-                                      hx-get="{% url 'main_account_details' pk=main_account.pk %}" hx-target="#accounts"
-                                      hx-push-url="{% url 'main_account_details' pk=main_account.pk %}"
-                                      >
-                                    Details ({{main_account.sub_account_set.count}})
-                                  </button>
+
+
+                                    {% if main_account.sub_account_set.count == 0 %}
+                                     <button hx-get="{% url 'add_sub_account' pk=main_account.pk %}" hx-target="#dialog" class="btn btn-primary">
+                                       {% trans "Add a Sub Account" %}
+                                    </button>
+                                     </a>
+                                   {% else %}
+                                    <a class="btn btn-sm btn-info"
+                                     href= "{% url 'main_account_details' pk=main_account.pk %}"  > Details ({{main_account.sub_account_set.count}})
+                                     </a>
+                                    {% endif %}
+
+
                                     </td>
                                     {% endif %}
                                 </tr>
