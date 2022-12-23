@@ -90,7 +90,44 @@ def balance_entry(j_form, balance=True,msg=''):
     return (balance, msg)
 
 
+def account_balance(journal):
+    account= journal.account
+    coin = journal.coin.short_title
+    if not type(account.credit) is dict:
+        account.credit={}
+    if not type(account.debit) is dict:
+        account.debit={}
+    if not type(account.balance) is dict:
+            account.balance={}
 
+    print('account.balance',type(account.balance),account.balance)
+    # print('account.credit',type(account.credit),account.credit)
+    # print('account.debit',type(account.debit),account.debit)
+    if journal.direction == '-1':# credit    //{'syp': 69}
+        # temp={}
+        if coin  in account.credit.keys():
+
+            account.credit[coin] =float(account.credit[coin])+float(journal.amount)
+        else:
+            account.credit[coin]=float(journal.amount)
+
+    else:
+        if coin  in account.debit.keys():
+            account.debit[coin] =float(account.debit[coin])+float(journal.amount)
+        else:
+            account.debit[coin]=float(journal.amount)
+
+    if not coin  in account.credit.keys():
+        account.credit[coin] = 0.0
+    if not coin  in account.debit.keys():
+        account.debit[coin] = 0.0
+
+    print('float(account.credit[coin])', float(account.credit[coin]))
+
+    account.balance[coin] = float(account.credit[coin])-float(account.debit[coin])
+    account.save()
+    print('credit',journal.account.credit )
+    print('debit',journal.account.debit )
 
 
 
@@ -123,6 +160,8 @@ def add_entry(request):
                 journal.author=request.user
                 if not journal.narration:
                     journal.narration = entry.narration
+
+                account_balance(journal)
                 journal.save()
             entry.balance=True
             entry.save()
@@ -196,6 +235,7 @@ def reverse_entry(request,pk):
                 journal.author=request.user
                 if not journal.narration:
                     journal.narration = entry.narration
+                account_balance(journal)
                 journal.save()
             entry.balance=True
             entry.save()

@@ -1,7 +1,7 @@
 from django.db import models
 # from django.contrib.contenttypes.models import ContentType
 # from django.contrib.contenttypes.fields import GenericRelation, GenericForeignKey
-from common.models import  SoftDeleteModel #,BaseModel,
+from common.models import  SoftDeleteModel ,BaseModel
 from international.models import Coin
 from mptt.models import MPTTModel, TreeForeignKey
 from django.db.models.signals import post_save, pre_save
@@ -71,16 +71,19 @@ class Main_account(MPTTModel):
 
 
 
-class Sub_account(models.Model):
+class Sub_account(BaseModel):
     main_account =TreeForeignKey('Main_account',   db_index=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     ar_name = models.CharField(max_length=255, null=True, blank=True)
 
     code = models.CharField(max_length=8, unique=True)
-    coin =  models.ManyToManyField(Coin, default=Coin.objects.filter(active=True).first().id)
-    dept  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    credit  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    balance =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
+    coin =  models.ManyToManyField(Coin, default=1)
+    # dept  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
+    debit  =models.JSONField()
+    # credit  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
+    credit  =models.JSONField()
+    # balance =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
+    balance =models.JSONField()
     used   = models.BooleanField(default=False , blank=True , null=True)
 
     class Meta:

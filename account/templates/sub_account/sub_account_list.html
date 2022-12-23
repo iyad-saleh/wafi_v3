@@ -1,36 +1,42 @@
-
 {% load i18n %}
-
 {% for sub_account in main_account.sub_account_set.all %}
-  <tr >
-
-
-      <td>{{ sub_account.code }} </td>
-      <td>{{ sub_account.name }} </td>
-      <td>{{ sub_account.ar_name }} </td>
-      <td>
-
-         {% for coin in sub_account.coin.all %}
-         <span class="badge badge-pill
+<tr>
+    <td>{{ sub_account.code }} </td>
+    <td>{{ sub_account.name }} </td>
+    <td>{{ sub_account.ar_name }} </td>
+    <td>
+        {% for coin in sub_account.coin.all %}
+        <span class="badge badge-pill
           {% if coin.id|divisibleby:2 %}  badge-primary
         {% elif coin.id|divisibleby:3 %}  badge-secondary
         {% else %}   class= badge-info
         {% endif %}
-         mb-1" style="font-size: 15px;"> {{ coin }}   </span><br/>{% endfor %}
-       </td>
-      <td>{{ sub_account.balance }} </td>
-      <td>
+         mb-1" style="font-size: 15px;"> {{ coin }} </span><br />{% endfor %}
+    </td>
+    <td> {% for key,value in sub_account.debit.items %}
+        {{ key}}:{{ value }}<br/>
+        {% endfor %}
+    </td>
+    <td>
+        {% for key,value in sub_account.credit.items %}
+        {{ key}}:{{ value }}<br/>
+        {% endfor %}
+    </td>
+    <td>
+        {% for key,value in sub_account.balance.items %}
+        {{ key}}:{{ value }} <br/>
+        {% endfor %}
+    </td>
+    <td> {{sub_account.updated_at}} </td>
+    <td>
         <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_sub_account' pk=sub_account.pk %}" hx-target="#dialog">Edit</button>
-<a class="btn btn-primary btn-sm" href ="{% url 'sub_account_journal' pk=sub_account.pk %}" >Journals</a>
-         </td>
-
-
-
-  </tr>
-  {% empty %}
-  <tr class="table-active">
-      <td colspan="12" class="hiddenRow">
-          No Sub Account
-      </td>
-  </tr>
-  {% endfor %}
+        <a class="btn btn-primary btn-sm" href="{% url 'sub_account_journal' pk=sub_account.pk %}">Journals</a>
+    </td>
+</tr>
+{% empty %}
+<tr class="table-active">
+    <td colspan="12" class="hiddenRow">
+        No Sub Account
+    </td>
+</tr>
+{% endfor %}
