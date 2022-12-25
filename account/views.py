@@ -246,6 +246,7 @@ def add_sub_account(request,pk):
         if form.is_valid():
             sub_account = form.save(commit=False)
             sub_account.main_account= main_account
+            sub_account.author=request.user
             sub_account.save()
             coins =form.cleaned_data['coin']
             for coin in coins:
@@ -286,6 +287,7 @@ def edit_sub_account(request,pk):
         if form.is_valid():
             sub_account = form.save(commit=False)
             sub_account.main_account= main_account
+            sub_account.author=request.user
             sub_account.save()
             sub_account.coin.clear()
             coins =form.cleaned_data['coin']

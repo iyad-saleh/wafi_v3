@@ -1,0 +1,1083 @@
+[
+    {
+        "model": "international.coin",
+        "pk": 1,
+        "fields":
+        {
+            "short_title": "syp",
+            "long_title": "syrian",
+            "active": true,
+            "exchange": "1.00000"
+        }
+    },
+    {
+        "model": "international.coin",
+        "pk": 2,
+        "fields":
+        {
+            "short_title": "USD",
+            "long_title": "USD",
+            "active": false,
+            "exchange": "6000.00000"
+        }
+    },
+    {
+        "model": "account.account_type",
+        "pk": 1,
+        "fields":
+        {
+            "code": "1",
+            "name": "Assets",
+            "ar_name": null,
+            "nature": "-1",
+            "final": "1"
+        }
+    },
+    {
+        "model": "account.account_type",
+        "pk": 2,
+        "fields":
+        {
+            "code": "2",
+            "name": "Liabilities and Equity",
+            "ar_name": null,
+            "nature": "1",
+            "final": "1"
+        }
+    },
+    {
+        "model": "account.account_type",
+        "pk": 3,
+        "fields":
+        {
+            "code": "3",
+            "name": "Expenses",
+            "ar_name": null,
+            "nature": "-1",
+            "final": "2"
+        }
+    },
+    {
+        "model": "account.account_type",
+        "pk": 4,
+        "fields":
+        {
+            "code": "4",
+            "name": "Revenues",
+            "ar_name": null,
+            "nature": "1",
+            "final": "2"
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 1,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": null,
+            "code": "11",
+            "name": "Fixed Assets",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 8,
+            "tree_id": 1,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 2,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": null,
+            "code": "12",
+            "name": "Current Assets",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 20,
+            "tree_id": 2,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 3,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": null,
+            "code": "21",
+            "name": "Owner's Equity",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 10,
+            "tree_id": 3,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 4,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": null,
+            "code": "22",
+            "name": "Fixed Liabilities",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 4,
+            "tree_id": 4,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 5,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": null,
+            "code": "23",
+            "name": "Current Liabilities",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 6,
+            "tree_id": 6,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 6,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": null,
+            "code": "31",
+            "name": "Cost of  Activity",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 10,
+            "tree_id": 7,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 7,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": null,
+            "code": "32",
+            "name": "Activity Expenses",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 14,
+            "tree_id": 8,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 8,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": null,
+            "code": "41",
+            "name": "Activity Of Revenues",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 6,
+            "tree_id": 9,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 9,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": null,
+            "code": "42",
+            "name": "Other Revenues",
+            "ar_name": null,
+            "lft": 1,
+            "rght": 8,
+            "tree_id": 10,
+            "level": 0
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 10,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 2,
+            "code": "121",
+            "name": "Cash & Cash Equivalents",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 7,
+            "tree_id": 2,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 11,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 2,
+            "code": "122",
+            "name": "Accounts Recievable Debtors",
+            "ar_name": null,
+            "lft": 8,
+            "rght": 13,
+            "tree_id": 2,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 12,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 2,
+            "code": "123",
+            "name": "Other Accounts Recievable",
+            "ar_name": null,
+            "lft": 14,
+            "rght": 19,
+            "tree_id": 2,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 13,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 3,
+            "code": "211",
+            "name": "Capital",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 14,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 3,
+            "code": "212",
+            "name": "Profit And Loss",
+            "ar_name": null,
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 15,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 3,
+            "code": "213",
+            "name": "Reserves",
+            "ar_name": null,
+            "lft": 6,
+            "rght": 7,
+            "tree_id": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 16,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 3,
+            "code": "214",
+            "name": "Partners' Current Account",
+            "ar_name": null,
+            "lft": 8,
+            "rght": 9,
+            "tree_id": 3,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 17,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 5,
+            "code": "231",
+            "name": "Account Payables   Creditors",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 6,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 18,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 5,
+            "code": "232",
+            "name": "Trade Creditors supplier",
+            "ar_name": null,
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 6,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 19,
+        "fields":
+        {
+            "account_type": 2,
+            "parent": 4,
+            "code": "221",
+            "name": "Long-term Liabilities",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 4,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 20,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 6,
+            "code": "311",
+            "name": "Cost of Sales",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 9,
+            "tree_id": 7,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 21,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 20,
+            "code": "3111",
+            "name": "Cost Goods Sold",
+            "ar_name": null,
+            "lft": 3,
+            "rght": 4,
+            "tree_id": 7,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 22,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 20,
+            "code": "3112",
+            "name": "Cost of Return Sales",
+            "ar_name": null,
+            "lft": 5,
+            "rght": 6,
+            "tree_id": 7,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 23,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 20,
+            "code": "3113",
+            "name": "Sales Returned",
+            "ar_name": null,
+            "lft": 7,
+            "rght": 8,
+            "tree_id": 7,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 24,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 7,
+            "code": "321",
+            "name": "Marketing and Administrative Expense",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 13,
+            "tree_id": 8,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 25,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 24,
+            "code": "3211",
+            "name": "General Expenses",
+            "ar_name": null,
+            "lft": 3,
+            "rght": 10,
+            "tree_id": 8,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 26,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 24,
+            "code": "3212",
+            "name": "Marketing Expenses",
+            "ar_name": null,
+            "lft": 11,
+            "rght": 12,
+            "tree_id": 8,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 27,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": 8,
+            "code": "411",
+            "name": "Revenue of Sales",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 9,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 28,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": 8,
+            "code": "412",
+            "name": "Indirect Revenue Related to Activiy",
+            "ar_name": null,
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 9,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 29,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": 9,
+            "code": "421",
+            "name": "Various Other Revenues",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 7,
+            "tree_id": 10,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 30,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 1,
+            "code": "111",
+            "name": "Real Estate",
+            "ar_name": null,
+            "lft": 2,
+            "rght": 3,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 31,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 1,
+            "code": "112",
+            "name": "Furniture and Fixtures",
+            "ar_name": null,
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 32,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 1,
+            "code": "113",
+            "name": "Computers & system",
+            "ar_name": null,
+            "lft": 6,
+            "rght": 7,
+            "tree_id": 1,
+            "level": 1
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 33,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 10,
+            "code": "1211",
+            "name": "Cash at Bank",
+            "ar_name": null,
+            "lft": 3,
+            "rght": 4,
+            "tree_id": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 34,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 10,
+            "code": "1212",
+            "name": "Cash in Hand",
+            "ar_name": null,
+            "lft": 5,
+            "rght": 6,
+            "tree_id": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 35,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 12,
+            "code": "1231",
+            "name": "Employee Imprest",
+            "ar_name": null,
+            "lft": 15,
+            "rght": 16,
+            "tree_id": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 36,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 12,
+            "code": "1232",
+            "name": "Temporary Imprest",
+            "ar_name": null,
+            "lft": 17,
+            "rght": 18,
+            "tree_id": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 37,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 11,
+            "code": "1221",
+            "name": "Clients",
+            "ar_name": null,
+            "lft": 9,
+            "rght": 10,
+            "tree_id": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 38,
+        "fields":
+        {
+            "account_type": 1,
+            "parent": 11,
+            "code": "1222",
+            "name": "Customer",
+            "ar_name": null,
+            "lft": 11,
+            "rght": 12,
+            "tree_id": 2,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 39,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 25,
+            "code": "32111",
+            "name": "Wages & Salaries and Similar",
+            "ar_name": null,
+            "lft": 4,
+            "rght": 5,
+            "tree_id": 8,
+            "level": 3
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 40,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 25,
+            "code": "32112",
+            "name": "General Administrative Expenses",
+            "ar_name": null,
+            "lft": 6,
+            "rght": 7,
+            "tree_id": 8,
+            "level": 3
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 41,
+        "fields":
+        {
+            "account_type": 3,
+            "parent": 25,
+            "code": "32113",
+            "name": "Repairs and Maintenance",
+            "ar_name": null,
+            "lft": 8,
+            "rght": 9,
+            "tree_id": 8,
+            "level": 3
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 42,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": 29,
+            "code": "4211",
+            "name": "Different Currency Revenues",
+            "ar_name": null,
+            "lft": 3,
+            "rght": 4,
+            "tree_id": 10,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.main_account",
+        "pk": 43,
+        "fields":
+        {
+            "account_type": 4,
+            "parent": 29,
+            "code": "4212",
+            "name": "Commissions Revenues",
+            "ar_name": null,
+            "lft": 5,
+            "rght": 6,
+            "tree_id": 10,
+            "level": 2
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 1,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:15:31.267Z",
+            "updated_at": "2022-12-25T18:15:31.267Z",
+            "author": 2,
+            "main_account": 38,
+            "name": "Customer 1",
+            "ar_name": null,
+            "code": "12221",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 2,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:16:02.889Z",
+            "updated_at": "2022-12-25T18:16:02.889Z",
+            "author": 2,
+            "main_account": 38,
+            "name": "Customer 2",
+            "ar_name": null,
+            "code": "12222",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1, 2]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 3,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:16:32.410Z",
+            "updated_at": "2022-12-25T18:16:32.410Z",
+            "author": 2,
+            "main_account": 34,
+            "name": "Main cash",
+            "ar_name": null,
+            "code": "12121",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1, 2]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 4,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:17:04.120Z",
+            "updated_at": "2022-12-25T18:17:04.120Z",
+            "author": 2,
+            "main_account": 33,
+            "name": "bank1",
+            "ar_name": null,
+            "code": "12111",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1, 2]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 5,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:23:34.876Z",
+            "updated_at": "2022-12-25T18:23:34.876Z",
+            "author": 2,
+            "main_account": 40,
+            "name": "Phones",
+            "ar_name": null,
+            "code": "321121",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 6,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:24:00.961Z",
+            "updated_at": "2022-12-25T18:24:00.961Z",
+            "author": 2,
+            "main_account": 40,
+            "name": "Electricity",
+            "ar_name": null,
+            "code": "321122",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 7,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:24:23.485Z",
+            "updated_at": "2022-12-25T18:24:23.485Z",
+            "author": 2,
+            "main_account": 40,
+            "name": "Rent Office",
+            "ar_name": null,
+            "code": "321123",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 8,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:24:55.302Z",
+            "updated_at": "2022-12-25T18:24:55.302Z",
+            "author": 2,
+            "main_account": 40,
+            "name": "Taxes",
+            "ar_name": null,
+            "code": "321124",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 9,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:25:17.980Z",
+            "updated_at": "2022-12-25T18:25:17.980Z",
+            "author": 2,
+            "main_account": 40,
+            "name": "Zakah",
+            "ar_name": null,
+            "code": "321125",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 10,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:26:06.035Z",
+            "updated_at": "2022-12-25T18:26:06.035Z",
+            "author": 2,
+            "main_account": 39,
+            "name": "Wages And Salaries",
+            "ar_name": null,
+            "code": "321111",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 11,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:26:24.366Z",
+            "updated_at": "2022-12-25T18:26:24.366Z",
+            "author": 2,
+            "main_account": 39,
+            "name": "Bonuses",
+            "ar_name": null,
+            "code": "321112",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 12,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:26:46.660Z",
+            "updated_at": "2022-12-25T18:26:46.660Z",
+            "author": 2,
+            "main_account": 39,
+            "name": "Compensation",
+            "ar_name": null,
+            "code": "321113",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 13,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:27:19.931Z",
+            "updated_at": "2022-12-25T18:27:19.931Z",
+            "author": 2,
+            "main_account": 39,
+            "name": "Fringe Benefits",
+            "ar_name": null,
+            "code": "321114",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 14,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:27:41.548Z",
+            "updated_at": "2022-12-25T18:27:41.548Z",
+            "author": 2,
+            "main_account": 39,
+            "name": "Food",
+            "ar_name": null,
+            "code": "321115",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 15,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:27:58.299Z",
+            "updated_at": "2022-12-25T18:27:58.299Z",
+            "author": 2,
+            "main_account": 39,
+            "name": "Medication",
+            "ar_name": null,
+            "code": "321116",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 16,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:30:15.741Z",
+            "updated_at": "2022-12-25T18:30:15.741Z",
+            "author": 2,
+            "main_account": 41,
+            "name": "Maintenance Buldings",
+            "ar_name": null,
+            "code": "321131",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    },
+    {
+        "model": "account.sub_account",
+        "pk": 17,
+        "fields":
+        {
+            "created_at": "2022-12-25T18:30:33.040Z",
+            "updated_at": "2022-12-25T18:30:33.040Z",
+            "author": 2,
+            "main_account": 41,
+            "name": "Maintenance Cars",
+            "ar_name": null,
+            "code": "321132",
+            "debit": null,
+            "credit": null,
+            "balance": null,
+            "used": false,
+            "coin": [1]
+        }
+    }
+]

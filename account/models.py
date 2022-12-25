@@ -79,11 +79,11 @@ class Sub_account(BaseModel):
     code = models.CharField(max_length=8, unique=True)
     coin =  models.ManyToManyField(Coin, default=1)
     # dept  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    debit  =models.JSONField()
+    debit  =models.JSONField(null=True, blank=True)
     # credit  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    credit  =models.JSONField()
+    credit  =models.JSONField(null=True, blank=True)
     # balance =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    balance =models.JSONField()
+    balance =models.JSONField(null=True, blank=True)
     used   = models.BooleanField(default=False , blank=True , null=True)
 
     class Meta:

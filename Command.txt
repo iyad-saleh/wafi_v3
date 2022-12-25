@@ -8,7 +8,7 @@ python manage.py makemigrations
 python manage.py makemigrations account blog users company customer box coin passport employee bus expense  trip reservation ked international
 
 
-python manage.py makemigrations common company account box blog users international
+python manage.py makemigrations common company account  blog users international passport entry airline dashboard
 
 
 

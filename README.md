@@ -6,7 +6,7 @@ python manage.py migrate
 python manage.py makemigrations
 
 
-python manage.py makemigrations account international  users dashboard common company account passport entry airline
+python manage.py makemigrations account international  users dashboard common company  passport entry airline
 
 python manage.py loaddata new.json
 
