@@ -13,15 +13,30 @@
       <div class="invalid-feedback">{{ form.amount.errors|first }}</div>
   </td>
   <td  class="col-sm-1" >
-      {% render_field form.coin class="form-control "   %}
-      <div class="invalid-feedback">{{ form.coin.errors|first }}</div>
+
+<div
+       hx-get="{% url 'selectCoin' %}"
+       hx-trigger="change"
+       hx-include="[name='journal_set-{{ id }}-coin']"
+       hx-target="#id_journal_set-{{ id }}-coin_ex"
+       hx-swap="outerHTML"
+       >
+
+{% render_field form.coin  class="form-control"   %}
+        <div class="invalid-feedback">{{ form.coin.errors|first }}</div>
+    </div>
   </td>
+  <td  class="col-sm-1" >
+    <!-- {% render_field form.coin_ex class="form-control "   %} -->
+    <input type="number" name="journal_set-{{ id }}-coin_ex" value="1" min="1" class="form-control " id="id_journal_set-{{ id }}-coin_ex">
+    <div class="invalid-feedback">{{ form.coin_ex.errors|first }}</div>
+</td>
   <td  class="col-sm-1" >
       {% render_field form.direction class="form-control "   %}
       <div class="invalid-feedback">{{ form.direction.errors|first }}</div>
   </td>
 
-  <td  class="col-sm-5" >
+  <td  class="col-sm-4" >
       {% render_field form.narration class="form-control " style="width:96%;" %}
       <div class="invalid-feedback">{{ form.narration.errors|first }}</div>
   </td>
@@ -37,6 +52,8 @@
 
   document.getElementById("id_coin").setAttribute("name","journal_set-{{id}}-coin");
   document.getElementById("id_coin").setAttribute("id","id_journal_set-{{id}}-coin");
+
+
 
   document.getElementById("id_direction").setAttribute("name","journal_set-{{id}}-direction");
   document.getElementById("id_direction").setAttribute("id","id_journal_set-{{id}}-direction");

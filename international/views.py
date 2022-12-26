@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Country, City, AirPort
+from .models import Country, City, AirPort, Coin
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.edit import CreateView
@@ -7,9 +7,22 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
+from django.shortcuts import get_object_or_404
 
 
+def selectCoin(request):
+    for c in request.GET:
+        if c.startswith('journal_set'):#journal_set-0-coin
+            coin = get_object_or_404(Coin, pk=request.GET.get(c))
+            cnt = c.strip('journal_set-').strip('-coin')
+            print(coin.exchange,cnt)
+            context={
+            'exchange':coin.exchange,
+            'cnt':int(cnt)
+            }
+            return render(request, 'coin/coin_ex.html',context)
 
+    # print(request.GET)
 
 def searchAirport(request):
 

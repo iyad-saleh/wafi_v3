@@ -11,7 +11,7 @@ class Coin(models.Model):
     short_title  = models.CharField(max_length=100, blank=True, null=True,help_text="رمز مختصر ")
     long_title   = models.CharField(max_length=300, blank=True, null=True,help_text="الاسم كامل")
     active       = models.BooleanField(default=False,help_text="الاساسية")#     الربح
-    exchange   =  models.DecimalField(max_digits=10, decimal_places=5 ,default=1)
+    exchange   =  models.DecimalField(max_digits=6, decimal_places=2 ,default=1)
     class Meta:
         verbose_name_plural = 'CURRENCIES'
 
@@ -22,7 +22,7 @@ class Coin(models.Model):
 class Coin_log(models.Model):
     base_coin = models.ForeignKey(Coin,on_delete=models.CASCADE,related_name='base')
     sec_coin = models.ForeignKey(Coin,on_delete=models.CASCADE,related_name='foreign')
-    rate         = models.DecimalField(max_digits=10, decimal_places=5 ,default=1)#
+    rate         = models.DecimalField(max_digits=6, decimal_places=2 ,default=1)#
     mult       = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 

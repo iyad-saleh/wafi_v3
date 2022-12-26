@@ -14,7 +14,8 @@
             <td>{{ journal.ked_date|date:"Y-m-d"  }}</td>
             <td>{{ journal.debit }}</td>
             <td>{{ journal.credit  }}</td>
-            <td>{{ journal.coin  }}</td>
+            <td>{{ journal.coin  }}<small class="form-text text-muted">({{ journal.coin_ex }})</small></td>
+
             <td>{{ journal.memo  }}</td>
             <td>{{ journal.author  }}</td>
             <td></td>

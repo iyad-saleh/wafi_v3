@@ -7,7 +7,7 @@
             "short_title": "syp",
             "long_title": "syrian",
             "active": true,
-            "exchange": "1.00000"
+            "exchange": "1.00"
         }
     },
     {
@@ -18,7 +18,7 @@
             "short_title": "USD",
             "long_title": "USD",
             "active": false,
-            "exchange": "6000.00000"
+            "exchange": "6000.00"
         }
     },
     {

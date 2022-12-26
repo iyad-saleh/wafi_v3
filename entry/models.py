@@ -32,6 +32,8 @@ class Journal(BaseModel, SoftDeleteModel):
                                                         ('-1','credit')))
 
     coin     = models.ForeignKey(Coin, null=True,blank=True, on_delete=models.SET_NULL )
+    coin_ex  =  models.DecimalField(max_digits=10, decimal_places=5 ,default=1)
+
     narration = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):

@@ -68,7 +68,8 @@
                                    </td>
                                     <td class="col-sm-2">{{ journal.entry.narration }}</td>
                                     <td class="col-sm-1">{{ journal.amount }}</td>
-                                    <td class="col-sm-1">{{ journal.coin }}</td>
+                                    <td class="col-sm-1">{{ journal.coin }}<br>
+                                    <small class="form-text text-muted">({{ journal.coin_ex }})</small></td>
                                     <td class="col-sm-1">{{ journal.get_direction_display }}</td>
                                     <td class="col-sm-3">{{ journal.narration }}</td>
                                     <td class="col-sm-1">{{ journal.author }}</td>

@@ -14,9 +14,8 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django.forms.fields import DateField
 from account.models import Sub_account
 from django.db.models import Q
-from djangoformsetjs.utils import formset_media_js
 
-
+from django.urls import reverse_lazy
 
 class EntryForm(forms.ModelForm):
 
@@ -30,39 +29,17 @@ class EntryForm(forms.ModelForm):
 
 
 class JournalForm(forms.ModelForm):
-    # account= forms.ModelChoiceField(queryset=Sub_account.objects.all(),to_field_name="name")
-    # iquery = Sub_account.objects.all()
-    # iquery_choices = {(acc, acc) for acc in iquery}
-    # account= forms.ChoiceField( choices=iquery_choices)
-    class Media(object):
-        js = formset_media_js + (
-            # Other form media here
-        )
+
     class Meta:
         model = Journal
-        fields = ['account','amount','direction','coin','narration']
+        fields = ['account','amount','direction','coin','coin_ex','narration']
+        # widgets = {
+        # 'coin': forms.TextInput(attrs={
+        #         'hx-get': reverse_lazy('check-username'),
+        #         'hx-target': '#div_id_username',
+        #         'hx-trigger': 'keyup[target.value.length > 3]'
+        #     })}
 
-            # 'direction':
-            # 'coin':
-    # def clean(self):
-    #     _mutable = self.data._mutable
-    #     self.data._mutable = True
-    #     for item in self.data:
-    #         if 'account'  in item:
-    #             if str(self.data[item]).isnumeric():
-    #                 continue
-    #             data =self.data[item].split('-')
-    #             code =data[0]
-    #             name = data[1]
-    #             acc = Sub_account.objects.filter(Q(name=name)|Q(code=code)).first()
-    #             if acc:
-    #                 self.data[item] = str(acc.id)
-    #     # set mutable flag back
-    #     self.data._mutable = _mutable
-    #     cleaned_data=super(JournalForm, self).clean()
-    #     print('cleaned_data', cleaned_data)
-    #     print('self.data', self.data)
-    #     return cleaned_data
 
 JournalFormSet = inlineformset_factory(Entry,
                                        Journal,

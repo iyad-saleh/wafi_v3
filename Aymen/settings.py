@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     # 'jquery',
-    # 'djangoformsetjs',
+   'django.contrib.humanize',
    'django_htmx',
     'mptt',
     'international',

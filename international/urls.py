@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (searchAirport,
+from .views import (searchAirport,selectCoin,
     AirPortList,CityList, CountryList,
     AirPortCreate,CityCreate,CountryCreate,
     AirPortDeleteView,CityDeleteView,CountryDeleteView
@@ -9,6 +9,7 @@ from .views import (searchAirport,
 
 urlpatterns = [
     path('', searchAirport,name='searchAirport'),
+    path('selectCoin/', selectCoin,name='selectCoin'),
     path('CountryList/', CountryList.as_view(),name='CountryList'),
     path('CountryCreate/', CountryCreate.as_view(),name='CountryCreate'),
 

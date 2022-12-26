@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 {% load widget_tweaks %}
 {% with WIDGET_ERROR_CLASS='is-invalid' %}
 <!-- Modal -->
@@ -46,8 +47,9 @@
                             <th  class="col-sm-3" >ACCOUNT</th>
                             <th  class="col-sm-2" >AMOUNT</th>
                             <th  class="col-sm-1" >COIN</th>
+                            <th  class="col-sm-1" >coin ex</th>
                             <th  class="col-sm-1" >DIRECTION</th>
-                            <th  class="col-sm-5" >NARRATION</th>
+                            <th  class="col-sm-4" >NARRATION</th>
                             </tr>
                         </thead>
 
@@ -64,7 +66,7 @@
 
                        {% for form in j_form.forms %}
                        <div class="invalid-feedback">{{ form.account.errors|first }}</div>
-                       <tr class="row"  id="journals-{{ forloop.counter0 }}" >
+                       <tr class="row gutters"  id="journals-{{ forloop.counter0 }}" >
                         <td  class="col-sm-3" >
                             {% render_field form.account class="form-control" list="accountlist"  %}
                           <div class="invalid-feedback">{{ form.account.errors|first }}</div>
@@ -74,14 +76,29 @@
                             <div class="invalid-feedback">{{ form.amount.errors|first }}</div>
                         </td>
                         <td  class="col-sm-1" >
-                            {% render_field form.coin class="form-control "   %}
+
+                           <div
+                           hx-get="{% url 'selectCoin' %}"
+                           hx-trigger="change"
+                           hx-include="[name='journal_set-{{ forloop.counter0 }}-coin']"
+                           hx-target="#id_journal_set-{{ forloop.counter0 }}-coin_ex"
+                           hx-swap="outerHTML"
+                           >
+
+     {% render_field form.coin  class="form-control"   %}
                             <div class="invalid-feedback">{{ form.coin.errors|first }}</div>
+                        </div>
+                        </td>
+                        <td  class="col-sm-1" >
+                            <!-- {% render_field form.coin_ex class="form-control "   %} -->
+                            <input type="number" name="journal_set-{{ forloop.counter0 }}-coin_ex" value="1" min="1" class="form-control " id="id_journal_set-{{ forloop.counter0 }}-coin_ex">
+                             <div class="invalid-feedback">{{ form.coin_ex.errors|first }}</div>
                         </td>
                         <td  class="col-sm-1" >
                             {% render_field form.direction class="form-control "   %}
                             <div class="invalid-feedback">{{ form.direction.errors|first }}</div>
                         </td>
-                        <td  class="col-sm-5" >
+                        <td  class="col-sm-4" >
                             {% render_field form.narration class="form-control " style="width:96%;" %}
                             <div class="invalid-feedback">{{ form.narration.errors|first }}</div>
                         </td>

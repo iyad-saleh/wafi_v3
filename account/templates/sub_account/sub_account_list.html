@@ -13,21 +13,21 @@
         {% endif %}
          mb-1" style="font-size: 15px;"> {{ coin }} </span><br />{% endfor %}
     </td>
-    <td> {% for key,value in sub_account.debit.items %}
-        {{ key}}:{{ value }}<br/>
+    <td  style="font-size: 15px;"> {% for key,value in sub_account.debit.items %}
+        {{ key}} : {{ value }}<br/>
         {% endfor %}
     </td>
-    <td>
+    <td  style="font-size: 15px;">
         {% for key,value in sub_account.credit.items %}
-        {{ key}}:{{ value }}<br/>
+        {{ key}} : {{ value }}<br/>
         {% endfor %}
     </td>
-    <td>
+    <td  style="font-size: 15px;">
         {% for key,value in sub_account.balance.items %}
-        {{ key}}:{{ value }} <br/>
+        {{ key}} : {{ value }} <br/>
         {% endfor %}
     </td>
-    <td> {{sub_account.updated_at}} </td>
+    <td> {{sub_account.updated_at|date:"Y-m-d"}} </td>
     <td>
         <button class="btn btn-primary btn-sm" hx-get="{% url 'edit_sub_account' pk=sub_account.pk %}" hx-target="#dialog">Edit</button>
         <a class="btn btn-primary btn-sm" href="{% url 'sub_account_journal' pk=sub_account.pk %}">Journals</a>
