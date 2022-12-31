@@ -58,7 +58,7 @@
                 <!-- <td  class="col-sm-1" >{{ journal.id }}</td> -->
                 <td  class="col-sm-2" >{{ journal.account }}</td>
                 <td  class="col-sm-1" >{{ journal.amount }}</td>
-                <td  class="col-sm-1" >{{ journal.coin }}<small class="form-text text-muted">({{ journal.coin_ex }})</small></td>
+                <td  class="col-sm-1" >{{ journal.coin }}<small class="form-text text-muted">({{ journal.coin_ex|floatformat:-2 }})</small></td>
                 <td  class="col-sm-1" >{{ journal.get_direction_display }}</td>
                 <td  class="col-sm-4" >{{ journal.narration }}</td>
                 <td  class="col-sm-1" >{{ journal.author }}</td>

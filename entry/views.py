@@ -90,7 +90,7 @@ def balance_entry(j_form, balance=True,msg=''):
     return (balance, msg)
 
 
-def account_balance(journal):
+def account_balance(journal):#moved to receiver
     account= journal.account
     coin = journal.coin.short_title
     if not type(account.credit) is dict:
@@ -161,7 +161,7 @@ def add_entry(request):
                 if not journal.narration:
                     journal.narration = entry.narration
 
-                account_balance(journal)
+                # account_balance(journal)
                 journal.save()
             entry.balance=True
             entry.save()
@@ -214,8 +214,10 @@ def reverse_entry(request,pk):
         TOTAL_FORMS = request.POST.get('journal_set-TOTAL_FORMS')
         # print('TOTAL_FORMS' ,TOTAL_FORMS)
         e_form = EntryForm(request.POST)
+        # if not request.POST.get('narration'):
+        #     e_form.fields['narration']=entry.narration +  '--REVERSE Entry--'
         j_form = JournalFormSet(request.POST)
-        # print('e_form', e_form)
+        # print("e_form['narration']",)
         if e_form.is_valid() and j_form.is_valid():
 
             # print('j_form.cleaned_data  : ',j_form.cleaned_data)
@@ -235,7 +237,7 @@ def reverse_entry(request,pk):
                 journal.author=request.user
                 if not journal.narration:
                     journal.narration = entry.narration
-                account_balance(journal)
+                # account_balance(journal)
                 journal.save()
             entry.balance=True
             entry.save()
@@ -258,18 +260,32 @@ def reverse_entry(request,pk):
 
 
     else:
-        e_form = EntryForm()
-        e_form.initial['narration']= entry.narration+ '--REVERSE--'
+        e_form = EntryForm(instance=entry)
+        # print(entry.narration)
+        temp= '--REVERSE Entry--'
+        try:
+            e_form.initial['narration']= entry.narration+ temp
+        except Exception as e:
+            e_form.initial['narration']=temp + str(entry.id)
+
         initial=[]
         for journal in entry.journal_set.all():
+            # print('journal.coin_ex',journal.coin_ex)
+            temp=''
+            try:
+                temp = journal.narration +'--REVERSE--'
+            except Exception as e:
+                temp ='--REVERSE journal--'+ str(journal.id)
 
             initial.append(
 
                 {'account' :journal.account,
                 'amount':journal.amount,
                 'coin':journal.coin,
+                'coin_ex':journal.coin_ex,
                 'direction':str(int(journal.direction)*-1),
-                'narration':journal.narration +'--REVERSE--'
+                'narration':temp
+
 
              }
             )
@@ -279,8 +295,10 @@ def reverse_entry(request,pk):
         TOTAL_FORMS= j_form.management_form.initial['TOTAL_FORMS']
 
 
-        for form in j_form:
-            form.initial['coin']= Coin.objects.filter(active=True).first()
+        # for form in j_form:
+
+            # print(form)
+        #     form.initial['coin']= Coin.objects.filter(active=True).first()
 
 
 

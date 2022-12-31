@@ -7,7 +7,10 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
-# Debit (the from-account) and Credit (the to-account).
+# Debit (the from-account)  the destination
+# Assets expenses dividends
+# Credit (the to-account).  the source
+#owner's equity liabilities revenue
 # Balance Sheet :
 #               "Asset" accounts type are normally set as Debit,
 #                    therefore its debit balance is shown as positive in the Balance Sheet.
@@ -79,11 +82,11 @@ class Sub_account(BaseModel):
     code = models.CharField(max_length=8, unique=True)
     coin =  models.ManyToManyField(Coin, default=1)
     # dept  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    debit  =models.JSONField(null=True, blank=True)
+    debit  =models.JSONField(default=dict, null=True, blank=True)
     # credit  =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    credit  =models.JSONField(null=True, blank=True)
+    credit  =models.JSONField(default=dict,null=True, blank=True)
     # balance =models.DecimalField(max_digits=10, decimal_places=2 ,default=0.0)#
-    balance =models.JSONField(null=True, blank=True)
+    balance =models.JSONField(default=dict,null=True, blank=True)
     used   = models.BooleanField(default=False , blank=True , null=True)
 
     class Meta:

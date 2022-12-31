@@ -13,7 +13,7 @@ class Entry( BaseModel,SoftDeleteModel):
 
     # name     = models.CharField(max_length=500)
     balance = models.BooleanField(default=False)
-    narration = models.CharField(max_length=500, null=True, blank=True)
+    narration = models.CharField(max_length=500)
     date = models.DateField(default=now)
     def __str__(self):
         return str(self.id)
@@ -40,9 +40,45 @@ class Journal(BaseModel, SoftDeleteModel):
         return str(self.entry.id)
 
 
-# @receiver(post_save, sender=Journal)
-# def create_Journal(sender, instance, created, **kwargs):
-#     if created:
+@receiver(post_save, sender=Journal)
+def account_balance(sender, instance, created, **kwargs):
+    if created:
+        account= instance.account
+        coin = instance.coin.short_title
+        if not type(account.credit) is dict:
+            account.credit={}
+        if not type(account.debit) is dict:
+            account.debit={}
+        if not type(account.balance) is dict:
+                account.balance={}
+
+        if instance.direction == '-1':# credit    //{'syp': 69}
+            # temp={}
+            if coin  in account.credit.keys():
+
+                account.credit[coin] =float(account.credit[coin]) + float(instance.amount)
+            else:
+                account.credit[coin]=float(instance.amount)
+
+        else:
+            if coin  in account.debit.keys():
+                account.debit[coin] =float(account.debit[coin]) + float(instance.amount)
+            else:
+                account.debit[coin]=float(instance.amount)
+
+        if not coin  in account.credit.keys():
+            account.credit[coin] = 0.0
+        if not coin  in account.debit.keys():
+            account.debit[coin] = 0.0
+
+        # print('float(account.credit[coin])', float(account.credit[coin]))
+
+        account.balance[coin] = float(account.credit[coin])-float(account.debit[coin])
+        account.save()
+    # print('credit',instance.account.credit )
+    # print('debit',instance.account.debit )
+
+
 #         if not instance.journal_2 :
 #             secondjournal = Journal.objects.create(
 #                     journal_2 = instance,
