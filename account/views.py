@@ -331,33 +331,38 @@ def remove_sub_account(request,pk):
         })
 
 
-def query_sub_account(request):
-    # print('request.GET', request.GET)
-    if request.GET.get('name') and   request.GET.get('code') :
-        name = request.GET.get('name')
-        code = request.GET.get('code')
-        hidden_id = request.GET.get('hidden_id')
-        sub_account= Sub_account.objects.filter(Q(name=name)|Q(code=code)).first()
-        print('name', name)
-        print('code', code)
-    return render(request, 'sub_account/hidden_sub_account.html',
-        {'sub_account':sub_account,'hidden_id':hidden_id}
-    )
+def sub_account(request):
+    accounts = Sub_account.objects.all()
+    return render(request, 'sub_account/sub_accounts.html',{'accounts':accounts})
 
 
-def search_sub_account(request):
-    search_text=None
-    hidden_id = request.GET.get('hidden_id')
-    search_text = request.GET.get('journal_set-'+str(hidden_id)+'-account--')
-    if search_text:
-        sub_accounts= Sub_account.objects.filter(Q(name__icontains=search_text)|Q(code__icontains=search_text)).distinct().order_by('id')
-    else:
-        sub_accounts = Sub_account.objects.all()
-        print('no search_text')
+# def query_sub_account(request):
+#     # print('request.GET', request.GET)
+#     if request.GET.get('name') and   request.GET.get('code') :
+#         name = request.GET.get('name')
+#         code = request.GET.get('code')
+#         hidden_id = request.GET.get('hidden_id')
+#         sub_account= Sub_account.objects.filter(Q(name=name)|Q(code=code)).first()
+#         print('name', name)
+#         print('code', code)
+#     return render(request, 'sub_account/hidden_sub_account.html',
+#         {'sub_account':sub_account,'hidden_id':hidden_id}
+#     )
 
-    return render(request, 'sub_account/search_sub_account.html',
-        {'sub_accounts':sub_accounts,'hidden_id':hidden_id}
-    )
+
+# def search_sub_account(request):
+#     search_text=None
+#     hidden_id = request.GET.get('hidden_id')
+#     search_text = request.GET.get('journal_set-'+str(hidden_id)+'-account--')
+#     if search_text:
+#         sub_accounts= Sub_account.objects.filter(Q(name__icontains=search_text)|Q(code__icontains=search_text)).distinct().order_by('id')
+#     else:
+#         sub_accounts = Sub_account.objects.all()
+#         print('no search_text')
+
+#     return render(request, 'sub_account/search_sub_account.html',
+#         {'sub_accounts':sub_accounts,'hidden_id':hidden_id}
+#     )
 
 
 @login_required

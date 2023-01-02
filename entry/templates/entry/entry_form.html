@@ -98,7 +98,7 @@
                             <input
                             type="number"
                             name="journal_set-{{ forloop.counter0 }}-coin_ex"
-                            value= '{% if not form.coin_ex.value == 1 %}{{ form.coin_ex.value }}{% else %}1{% endif %}'
+                            value= '{% if not form.coin_ex.value == 1 %}{{ form.coin_ex.value|floatformat:-2 }}{% else %}1{% endif %}'
                             min="1"  required
                             class="form-control " id="id_journal_set-{{ forloop.counter0 }}-coin_ex">
                              <div class="invalid-feedback">{{ form.coin_ex.errors|first }}</div>

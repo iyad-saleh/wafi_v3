@@ -4,14 +4,14 @@
 <tr id="entry-{{ entry.pk }}" class="row">
 
     <td class="col-sm-1" >{{ entry.id  }}</td>
-    <td class="col-sm-6" >{{ entry.narration|truncatechars:40  }}</td>
+    <td class="col-sm-6" ><a href="{% url 'entry_detail' pk=entry.pk %}">{{ entry.narration|truncatechars:40  }}</a>  </td>
     <!-- <td class="col-sm-1" >{{ entry.balance  }}</td> -->
     <td class="col-sm-1" >{{ entry.author  }}</td>
-    <td class="col-sm-1" >{{ entry.updated_at|date:"Y-m-d"   }}</td>
-    <td class="col-sm-2" >
-        <a class="btn btn-primary"   href="{% url 'entry_detail' pk=entry.pk %}">
+    <td class="col-sm-2" >{{ entry.date|date:"Y-m-d"   }}</td>
+    <td class="col-sm-1" >
 
-      {{  entry.journal_set.count}} {% trans "Journals" %}
+
+      {{  entry.journal_set.count}}
     </a>
 
   </td>

@@ -1,0 +1,10 @@
+
+{% load i18n %}
+
+ {% for account in accounts %}
+ <option value="{{account.id}}"  > {{account.code}}-{{account.name}}  </option>
+
+{% endfor %}
+
+
+

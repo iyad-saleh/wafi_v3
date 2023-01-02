@@ -17,8 +17,9 @@ urlpatterns = [
     path('remove_main_account/<int:pk>/remove', remove_main_account, name='remove_main_account'),
 
 
-    path('query_sub_account/', query_sub_account, name='query_sub_account'),
-    path('search_sub_account/', search_sub_account, name='search_sub_account'),
+    # path('query_sub_account/', query_sub_account, name='query_sub_account'),
+    # path('search_sub_account/', search_sub_account, name='search_sub_account'),
+    path('sub_account/', sub_account, name='sub_account'),
     path('sub_account_list/<int:pk>/', sub_account_list, name='sub_account_list'),
     path('add_sub_account/<int:pk>/add', add_sub_account, name='add_sub_account'),
     path('edit_sub_account/<int:pk>/edit', edit_sub_account, name='edit_sub_account'),

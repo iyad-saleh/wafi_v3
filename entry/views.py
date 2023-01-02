@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from datetime import datetime
-
+from django.forms.models import    inlineformset_factory
 @login_required
 def index(request):
 
@@ -49,7 +49,7 @@ def entry_list(request):
             print(type(end),end)
             entry_list = entry_list.filter(Q(date__gte=start) & Q(date__lte=end)).distinct()
 
-    paginator = Paginator(entry_list, 20)
+    paginator = Paginator(entry_list, 10)
     page = request.GET.get('page', 1)
     try:
         entries = paginator.page(page)
@@ -289,10 +289,16 @@ def reverse_entry(request,pk):
 
              }
             )
+            j_form =inlineformset_factory(Entry,
+                                       Journal,
+                                        form=JournalForm,
+                                        # min_num=2,  # minimum number of forms that must be filled in
+                                        extra=entry.journal_set.all().count(),  # number of empty forms to display
+                                        can_delete=False )
+        j_form = j_form(initial=initial)
 
-        j_form = JournalFormSet(initial=initial)
-
-        TOTAL_FORMS= j_form.management_form.initial['TOTAL_FORMS']
+        # j_form.management_form.initial['TOTAL_FORMS']= entry.journal_set.all().count()
+        TOTAL_FORMS= entry.journal_set.all().count()
 
 
         # for form in j_form:
@@ -301,7 +307,7 @@ def reverse_entry(request,pk):
         #     form.initial['coin']= Coin.objects.filter(active=True).first()
 
 
-
+    print('TOTAL_FORMS',TOTAL_FORMS)
     return render(request, 'entry/entry_form.html', {
         'e_form': e_form,'j_form':j_form,'balance':balance,'TOTAL_FORMS':TOTAL_FORMS
 
