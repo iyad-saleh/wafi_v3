@@ -44,37 +44,34 @@ class Journal(BaseModel, SoftDeleteModel):
 def account_balance(sender, instance, created, **kwargs):
     if created:
         account= instance.account
+        main_account = account.main_account
         coin = instance.coin.short_title
-        if not type(account.credit) is dict:
-            account.credit={}
-        if not type(account.debit) is dict:
-            account.debit={}
-        if not type(account.balance) is dict:
-                account.balance={}
+        # if not type(account.credit) is dict:
+        #     account.credit={}
+        # if not type(account.debit) is dict:
+        #     account.debit={}
+        # if not type(account.balance) is dict:
+        #         account.balance={}
+
+        # if not coin  in account.credit.keys():
+        #     account.credit[coin] = 0.0
+        # if not coin  in account.debit.keys():
+        #     account.debit[coin] = 0.0
+
 
         if instance.direction == '-1':# credit    //{'syp': 69}
             # temp={}
-            if coin  in account.credit.keys():
-
-                account.credit[coin] =float(account.credit[coin]) + float(instance.amount)
-            else:
-                account.credit[coin]=float(instance.amount)
-
+            account.credit[coin] =float(account.credit[coin]) + float(instance.amount)
+            main_account.credit[coin] += float(instance.amount)
         else:
-            if coin  in account.debit.keys():
-                account.debit[coin] =float(account.debit[coin]) + float(instance.amount)
-            else:
-                account.debit[coin]=float(instance.amount)
-
-        if not coin  in account.credit.keys():
-            account.credit[coin] = 0.0
-        if not coin  in account.debit.keys():
-            account.debit[coin] = 0.0
-
+            account.debit[coin] =float(account.debit[coin]) + float(instance.amount)
+            main_account.debit[coin] += float(instance.amount)
         # print('float(account.credit[coin])', float(account.credit[coin]))
 
-        account.balance[coin] = float(account.credit[coin])-float(account.debit[coin])
+        account.balance[coin] += float(account.credit[coin])-float(account.debit[coin])
+        main_account.balance[coin] +=float(account.credit[coin])-float(account.debit[coin])
         account.save()
+        main_account.save()
     # print('credit',instance.account.credit )
     # print('debit',instance.account.debit )
 

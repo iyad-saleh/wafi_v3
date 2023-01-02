@@ -231,6 +231,25 @@ def remove_main_account(request, pk):
 @login_required
 def sub_account_list(request,pk):
     main_account = get_object_or_404(Main_account,pk=pk)
+    # total_debit ={}#amount  direction   coin
+    # total_credit ={}#amount  direction   coin
+    # total_balance ={}#amount  direction   coin
+    # for account in main_account.sub_account_set.all():
+    #     journals_list = Journal.objects.filter(account=account)
+    #     # print(journals_list)
+    #     for j in journals_list:
+    #         if j.direction=='1': #('1','debit')  ('-1','credit')
+
+    #             total_debit[j.coin.short_title] += float(j.amount)
+    #         else :
+    #             total_credit[j.coin.short_title] += float(j.amount)
+
+            # if j.coin.short_title in total_balance:
+            #     total_balance[j.coin.short_title] += float(j.amount)*float(j.direction)
+            # else:
+            #     total_balance[j.coin.short_title]=float(j.amount)*float(j.direction)
+
+
 
     return  render(request, 'sub_account/sub_account_list.html', {
         'main_account':main_account
@@ -251,6 +270,19 @@ def add_sub_account(request,pk):
             coins =form.cleaned_data['coin']
             for coin in coins:
                 sub_account.coin.add(coin)
+                sub_account.debit[coin.short_title]=float(0)
+                sub_account.credit[coin.short_title]=float(0)
+                sub_account.balance[coin.short_title]=float(0)
+
+                if not coin.short_title in main_account.debit:
+                    main_account.debit[coin.short_title]=float(0)
+                if not coin.short_title in main_account.credit :
+                    main_account.credit[coin.short_title]=float(0)
+                if not coin.short_title in main_account.balance:
+                    main_account.balance[coin.short_title]=float(0)
+                main_account.save()
+                sub_account.save()
+
             return HttpResponse(
                 status=204,
                 headers={

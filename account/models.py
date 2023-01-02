@@ -63,8 +63,9 @@ class Main_account(MPTTModel):
     code = models.CharField(max_length=5)
     name = models.CharField(max_length=255, unique=True)
     ar_name = models.CharField(max_length=255, null=True, blank=True)
-
-    # coin = models.ForeignKey(Coin,null=True,blank=True, on_delete=models.SET_NULL)
+    debit  =models.JSONField(default=dict, null=True, blank=True)
+    credit  =models.JSONField(default=dict,null=True, blank=True)
+    balance =models.JSONField(default=dict,null=True, blank=True)
     class MPTTMeta:
         order_insertion_by = ['code']
     class Meta:

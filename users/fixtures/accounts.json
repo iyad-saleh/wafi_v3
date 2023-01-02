@@ -463,6 +463,20 @@
             "code": "3211",
             "name": "General Expenses",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
+
             "lft": 3,
             "rght": 10,
             "tree_id": 8,
@@ -591,6 +605,23 @@
             "code": "1211",
             "name": "Cash at Bank",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+
+
             "lft": 3,
             "rght": 4,
             "tree_id": 2,
@@ -607,6 +638,23 @@
             "code": "1212",
             "name": "Cash in Hand",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+
+
             "lft": 5,
             "rght": 6,
             "tree_id": 2,
@@ -671,6 +719,21 @@
             "code": "1222",
             "name": "Customer",
             "ar_name": null,
+            "debit":
+        {
+            "syp": 0.0,
+            "USD": 0.0
+        },
+        "credit":
+        {
+            "syp": 0.0,
+            "USD": 0.0
+        },
+        "balance":
+        {
+            "syp": 0.0,
+            "USD": 0.0
+        },
             "lft": 11,
             "rght": 12,
             "tree_id": 2,
@@ -687,6 +750,20 @@
             "code": "32111",
             "name": "Wages & Salaries and Similar",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
+
             "lft": 4,
             "rght": 5,
             "tree_id": 8,
@@ -703,6 +780,20 @@
             "code": "32112",
             "name": "General Administrative Expenses",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
+
             "lft": 6,
             "rght": 7,
             "tree_id": 8,
@@ -719,6 +810,20 @@
             "code": "32113",
             "name": "Repairs and Maintenance",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
+
             "lft": 8,
             "rght": 9,
             "tree_id": 8,
@@ -769,11 +874,23 @@
             "name": "Customer 1",
             "ar_name": null,
             "code": "12221",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
-            "coin": [1]
+            "debit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+
+            "coin": [1, 2]
         }
     },
     {
@@ -788,10 +905,22 @@
             "name": "Customer 2",
             "ar_name": null,
             "code": "12222",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+
             "coin": [1, 2]
         }
     },
@@ -807,10 +936,22 @@
             "name": "Main cash",
             "ar_name": null,
             "code": "12121",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+
             "coin": [1, 2]
         }
     },
@@ -826,10 +967,22 @@
             "name": "bank1",
             "ar_name": null,
             "code": "12111",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+                "USD": 0.0
+            },
+
             "coin": [1, 2]
         }
     },
@@ -845,10 +998,19 @@
             "name": "Phones",
             "ar_name": null,
             "code": "321121",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -864,10 +1026,19 @@
             "name": "Electricity",
             "ar_name": null,
             "code": "321122",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -883,10 +1054,19 @@
             "name": "Rent Office",
             "ar_name": null,
             "code": "321123",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -902,10 +1082,19 @@
             "name": "Taxes",
             "ar_name": null,
             "code": "321124",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -921,10 +1110,19 @@
             "name": "Zakah",
             "ar_name": null,
             "code": "321125",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -940,10 +1138,19 @@
             "name": "Wages And Salaries",
             "ar_name": null,
             "code": "321111",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -959,10 +1166,19 @@
             "name": "Bonuses",
             "ar_name": null,
             "code": "321112",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -978,10 +1194,19 @@
             "name": "Compensation",
             "ar_name": null,
             "code": "321113",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -997,10 +1222,19 @@
             "name": "Fringe Benefits",
             "ar_name": null,
             "code": "321114",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -1016,10 +1250,19 @@
             "name": "Food",
             "ar_name": null,
             "code": "321115",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -1035,10 +1278,19 @@
             "name": "Medication",
             "ar_name": null,
             "code": "321116",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -1054,10 +1306,19 @@
             "name": "Maintenance Buldings",
             "ar_name": null,
             "code": "321131",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     },
@@ -1073,10 +1334,19 @@
             "name": "Maintenance Cars",
             "ar_name": null,
             "code": "321132",
-            "debit": null,
-            "credit": null,
-            "balance": null,
-            "used": false,
+            "debit":
+            {
+                "syp": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0
+            },
+
             "coin": [1]
         }
     }
