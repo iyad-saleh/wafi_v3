@@ -62,18 +62,18 @@
                             <tbody>
                                 {% for journal in journals %}
                                 <tr>
-                                    <td class="col-sm-1">{{ journal.id }}</td>
-                                    <td class="col-sm-1">
+                                    <td class="col-sm-1" style="font-size: 15px;">{{ journal.id }}</td>
+                                    <td class="col-sm-1" style="font-size: 15px;">
                                         <a href="{% url 'entry_detail' pk=journal.entry.id %}"> {{ journal.entry.id }}</a>
                                    </td>
-                                    <td class="col-sm-2">{{ journal.entry.narration }}</td>
+                                    <td class="col-sm-2" style="font-size: 15px;">{{ journal.entry.narration }}</td>
                                     <td class="col-sm-1">{{ journal.amount }}</td>
-                                    <td class="col-sm-1">{{ journal.coin }}<br>
-                                    <small class="form-text text-muted">({{ journal.coin_ex }})</small></td>
-                                    <td class="col-sm-1">{{ journal.get_direction_display }}</td>
-                                    <td class="col-sm-3">{{ journal.narration }}</td>
-                                    <td class="col-sm-1">{{ journal.author }}</td>
-                                    <td class="col-sm-1">{{ journal.updated_at|date:"Y-m-d" }}</td>
+                                    <td class="col-sm-1" style="font-size: 15px;">{{ journal.coin }}<br>
+                                    <small class="form-text text-muted">({{ journal.coin_ex|floatformat:-2 }})</small></td>
+                                    <td class="col-sm-1" style="font-size: 15px;">{{ journal.get_direction_display }}</td>
+                                    <td class="col-sm-3" style="font-size: 15px;">{{ journal.narration }}</td>
+                                    <td class="col-sm-1" style="font-size: 15px;">{{ journal.author }}</td>
+                                    <td class="col-sm-1" style="font-size: 15px;">{{ journal.updated_at|date:"Y-m-d" }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

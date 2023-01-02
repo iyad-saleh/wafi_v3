@@ -371,7 +371,7 @@ def sub_account_journal(request,pk):
     account = get_object_or_404(Sub_account, pk=pk)
     journals_list = Journal.objects.filter(account=account)
     total ={}#amount  direction   coin
-    print(journals_list)
+    # print(journals_list)
     for j in journals_list:
         if j.coin.short_title in total:
             total[j.coin.short_title] += float(j.amount)*float(j.direction)
