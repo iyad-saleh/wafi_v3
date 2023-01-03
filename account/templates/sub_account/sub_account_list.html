@@ -13,18 +13,25 @@
         {% endif %}
          mb-1" style="font-size: 15px;"> {{ coin }} </span><br />{% endfor %}
     </td>
-    <td  style="font-size: 15px;"> {% for key,value in sub_account.debit.items %}
-        {{ key}} : {{ value }}<br/>
+    <td  style="font-size: 15px;">
+        {% for key,value in sub_account.debit.items %}
+            {% if not value == 0 %}
+                {{ key}} : {{ value }}<br/>
+            {% endif %}
         {% endfor %}
     </td>
     <td  style="font-size: 15px;">
         {% for key,value in sub_account.credit.items %}
-        {{ key}} : {{ value }}<br/>
+            {% if not value == 0 %}
+                {{ key}} : {{ value }}<br/>
+            {% endif %}
         {% endfor %}
     </td>
     <td  style="font-size: 15px;">
         {% for key,value in sub_account.balance.items %}
-        {{ key}} : {{ value }} <br/>
+            {% if not value == 0 %}
+                {{ key}} : {{ value }} <br/>
+            {% endif %}
         {% endfor %}
     </td>
     <td> {{sub_account.updated_at|date:"Y-m-d"}} </td>
@@ -33,6 +40,7 @@
         <a class="btn btn-primary btn-sm" href="{% url 'sub_account_journal' pk=sub_account.pk %}">Journals</a>
     </td>
 </tr>
+
 {% empty %}
 <tr class="table-active">
     <td colspan="12" class="hiddenRow">
@@ -40,3 +48,28 @@
     </td>
 </tr>
 {% endfor %}
+
+<tr style="background-color:#1a8e5f;color: #fff;">
+
+    <td>TOTAL:</td>
+    <td colspan="3"> {{main_account.name}}  </td>
+
+    <td> {% for key,value in main_account.debit.items %}
+        {% if not value == 0 %}
+            {{ key}} : {{ value }}<br/>
+        {% endif %}
+        {% endfor %}
+    </td>
+    <td> {% for key,value in main_account.credit.items %}
+            {% if not value == 0 %}
+                {{ key}} : {{ value }}<br/>
+            {% endif %}
+        {% endfor %}
+    </td>
+    <td> {% for key,value in main_account.balance.items %}
+        {% if not value == 0 %}
+            {{ key}} : {{ value }}<br/>
+        {% endif %}
+        {% endfor %}
+    </td>
+</tr>

@@ -71,7 +71,7 @@ def balance_entry(j_form, balance=True,msg=''):
     # print('balance_entrybalance_entrybalance_entry')
     temp ={}#amount  direction   coin
     for j in j_form.cleaned_data:
-        print(j['account'].coin.all)
+        # print(j['account'].coin.all)
         if not  j['coin'] in j['account'].coin.all():
             msg =str( j['account'].name)+'/  curruncy is not same  / '+  str(j['coin'].short_title)
             balance=False
@@ -90,44 +90,44 @@ def balance_entry(j_form, balance=True,msg=''):
     return (balance, msg)
 
 
-def account_balance(journal):#moved to receiver
-    account= journal.account
-    coin = journal.coin.short_title
-    if not type(account.credit) is dict:
-        account.credit={}
-    if not type(account.debit) is dict:
-        account.debit={}
-    if not type(account.balance) is dict:
-            account.balance={}
+# def account_balance(journal):#moved to receiver
+#     account= journal.account
+#     coin = journal.coin.short_title
+#     if not type(account.credit) is dict:
+#         account.credit={}
+#     if not type(account.debit) is dict:
+#         account.debit={}
+#     if not type(account.balance) is dict:
+#             account.balance={}
 
-    print('account.balance',type(account.balance),account.balance)
-    # print('account.credit',type(account.credit),account.credit)
-    # print('account.debit',type(account.debit),account.debit)
-    if journal.direction == '-1':# credit    //{'syp': 69}
-        # temp={}
-        if coin  in account.credit.keys():
+#     print('account.balance',type(account.balance),account.balance)
+#     # print('account.credit',type(account.credit),account.credit)
+#     # print('account.debit',type(account.debit),account.debit)
+#     if journal.direction == '-1':# credit    //{'syp': 69}
+#         # temp={}
+#         if coin  in account.credit.keys():
 
-            account.credit[coin] =float(account.credit[coin])+float(journal.amount)
-        else:
-            account.credit[coin]=float(journal.amount)
+#             account.credit[coin] =float(account.credit[coin])+float(journal.amount)
+#         else:
+#             account.credit[coin]=float(journal.amount)
 
-    else:
-        if coin  in account.debit.keys():
-            account.debit[coin] =float(account.debit[coin])+float(journal.amount)
-        else:
-            account.debit[coin]=float(journal.amount)
+#     else:
+#         if coin  in account.debit.keys():
+#             account.debit[coin] =float(account.debit[coin])+float(journal.amount)
+#         else:
+#             account.debit[coin]=float(journal.amount)
 
-    if not coin  in account.credit.keys():
-        account.credit[coin] = 0.0
-    if not coin  in account.debit.keys():
-        account.debit[coin] = 0.0
+#     if not coin  in account.credit.keys():
+#         account.credit[coin] = 0.0
+#     if not coin  in account.debit.keys():
+#         account.debit[coin] = 0.0
 
-    print('float(account.credit[coin])', float(account.credit[coin]))
+#     print('float(account.credit[coin])', float(account.credit[coin]))
 
-    account.balance[coin] = float(account.credit[coin])-float(account.debit[coin])
-    account.save()
-    print('credit',journal.account.credit )
-    print('debit',journal.account.debit )
+#     account.balance[coin] = float(account.credit[coin])-float(account.debit[coin])
+#     account.save()
+#     print('credit',journal.account.credit )
+#     print('debit',journal.account.debit )
 
 
 
@@ -164,13 +164,13 @@ def add_entry(request):
                 # account_balance(journal)
                 journal.save()
             entry.balance=True
-            entry.save()
+            # entry.save()
             return HttpResponse(
                 status=204,
                 headers={
                     'HX-Trigger': json.dumps({
                         "entryListChanged": None,
-                        "showMessage": f"{entry.id} Added."
+                        "showMessage": f"{entry.narration} Added."
                     })
                 }
             )

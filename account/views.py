@@ -255,6 +255,30 @@ def sub_account_list(request,pk):
         'main_account':main_account
     })
 
+def add_coin_Main(main_account,coin):
+    main_account = get_object_or_404(Main_account,pk=main_account.id)
+    if not coin in main_account.debit:
+        main_account.debit[coin]=float(0)
+    if not coin in main_account.credit:
+        main_account.credit[coin]=float(0)
+    if not  coin in main_account.balance:
+        main_account.balance[coin]=float(0)
+    main_account.save()
+    if main_account.parent:
+        add_coin_Main(main_account.parent,coin)
+    else:
+        account_type  = get_object_or_404(Account_type,pk=main_account.account_type.id)
+        if not coin in account_type.debit:
+            account_type.debit[coin]=float(0)
+        if not coin in account_type.credit:
+            account_type.credit[coin]=float(0)
+        if not  coin in account_type.balance:
+            account_type.balance[coin]=float(0)
+        account_type.save()
+
+
+
+
 @login_required
 def add_sub_account(request,pk):
     main_account = get_object_or_404(Main_account,pk=pk)
@@ -274,12 +298,7 @@ def add_sub_account(request,pk):
                 sub_account.credit[coin.short_title]=float(0)
                 sub_account.balance[coin.short_title]=float(0)
 
-                if not coin.short_title in main_account.debit:
-                    main_account.debit[coin.short_title]=float(0)
-                if not coin.short_title in main_account.credit :
-                    main_account.credit[coin.short_title]=float(0)
-                if not coin.short_title in main_account.balance:
-                    main_account.balance[coin.short_title]=float(0)
+                add_coin_Main(main_account,coin.short_title)
                 main_account.save()
                 sub_account.save()
 

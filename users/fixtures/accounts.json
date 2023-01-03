@@ -29,6 +29,21 @@
             "code": "1",
             "name": "Assets",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
             "nature": "-1",
             "final": "1"
         }
@@ -41,6 +56,21 @@
             "code": "2",
             "name": "Liabilities and Equity",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
             "nature": "1",
             "final": "1"
         }
@@ -53,6 +83,21 @@
             "code": "3",
             "name": "Expenses",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
             "nature": "-1",
             "final": "2"
         }
@@ -65,6 +110,21 @@
             "code": "4",
             "name": "Revenues",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
             "nature": "1",
             "final": "2"
         }
@@ -79,6 +139,22 @@
             "code": "11",
             "name": "Fixed Assets",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 8,
             "tree_id": 1,
@@ -95,6 +171,22 @@
             "code": "12",
             "name": "Current Assets",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 20,
             "tree_id": 2,
@@ -111,6 +203,22 @@
             "code": "21",
             "name": "Owner's Equity",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 10,
             "tree_id": 3,
@@ -127,6 +235,22 @@
             "code": "22",
             "name": "Fixed Liabilities",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 4,
             "tree_id": 4,
@@ -143,6 +267,22 @@
             "code": "23",
             "name": "Current Liabilities",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 6,
             "tree_id": 6,
@@ -159,6 +299,22 @@
             "code": "31",
             "name": "Cost of  Activity",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 10,
             "tree_id": 7,
@@ -175,6 +331,22 @@
             "code": "32",
             "name": "Activity Expenses",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 14,
             "tree_id": 8,
@@ -191,6 +363,22 @@
             "code": "41",
             "name": "Activity Of Revenues",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 6,
             "tree_id": 9,
@@ -207,6 +395,22 @@
             "code": "42",
             "name": "Other Revenues",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 1,
             "rght": 8,
             "tree_id": 10,
@@ -223,6 +427,22 @@
             "code": "121",
             "name": "Cash & Cash Equivalents",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 7,
             "tree_id": 2,
@@ -239,6 +459,22 @@
             "code": "122",
             "name": "Accounts Recievable Debtors",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 8,
             "rght": 13,
             "tree_id": 2,
@@ -255,6 +491,22 @@
             "code": "123",
             "name": "Other Accounts Recievable",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 14,
             "rght": 19,
             "tree_id": 2,
@@ -271,6 +523,22 @@
             "code": "211",
             "name": "Capital",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 3,
             "tree_id": 3,
@@ -287,6 +555,22 @@
             "code": "212",
             "name": "Profit And Loss",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 4,
             "rght": 5,
             "tree_id": 3,
@@ -303,6 +587,22 @@
             "code": "213",
             "name": "Reserves",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 6,
             "rght": 7,
             "tree_id": 3,
@@ -319,6 +619,22 @@
             "code": "214",
             "name": "Partners' Current Account",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 8,
             "rght": 9,
             "tree_id": 3,
@@ -335,6 +651,22 @@
             "code": "231",
             "name": "Account Payables   Creditors",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 3,
             "tree_id": 6,
@@ -351,6 +683,22 @@
             "code": "232",
             "name": "Trade Creditors supplier",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 4,
             "rght": 5,
             "tree_id": 6,
@@ -367,6 +715,22 @@
             "code": "221",
             "name": "Long-term Liabilities",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 3,
             "tree_id": 4,
@@ -383,6 +747,22 @@
             "code": "311",
             "name": "Cost of Sales",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 9,
             "tree_id": 7,
@@ -399,6 +779,22 @@
             "code": "3111",
             "name": "Cost Goods Sold",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 3,
             "rght": 4,
             "tree_id": 7,
@@ -415,6 +811,22 @@
             "code": "3112",
             "name": "Cost of Return Sales",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 5,
             "rght": 6,
             "tree_id": 7,
@@ -431,6 +843,22 @@
             "code": "3113",
             "name": "Sales Returned",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 7,
             "rght": 8,
             "tree_id": 7,
@@ -447,6 +875,22 @@
             "code": "321",
             "name": "Marketing and Administrative Expense",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 13,
             "tree_id": 8,
@@ -465,15 +909,18 @@
             "ar_name": null,
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
 
@@ -493,6 +940,22 @@
             "code": "3212",
             "name": "Marketing Expenses",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 11,
             "rght": 12,
             "tree_id": 8,
@@ -509,6 +972,22 @@
             "code": "411",
             "name": "Revenue of Sales",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 3,
             "tree_id": 9,
@@ -525,6 +1004,22 @@
             "code": "412",
             "name": "Indirect Revenue Related to Activiy",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 4,
             "rght": 5,
             "tree_id": 9,
@@ -541,6 +1036,22 @@
             "code": "421",
             "name": "Various Other Revenues",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 7,
             "tree_id": 10,
@@ -557,6 +1068,22 @@
             "code": "111",
             "name": "Real Estate",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 2,
             "rght": 3,
             "tree_id": 1,
@@ -573,6 +1100,22 @@
             "code": "112",
             "name": "Furniture and Fixtures",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 4,
             "rght": 5,
             "tree_id": 1,
@@ -589,6 +1132,22 @@
             "code": "113",
             "name": "Computers & system",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 6,
             "rght": 7,
             "tree_id": 1,
@@ -671,6 +1230,22 @@
             "code": "1231",
             "name": "Employee Imprest",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 15,
             "rght": 16,
             "tree_id": 2,
@@ -687,6 +1262,22 @@
             "code": "1232",
             "name": "Temporary Imprest",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 17,
             "rght": 18,
             "tree_id": 2,
@@ -703,6 +1294,22 @@
             "code": "1221",
             "name": "Clients",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 9,
             "rght": 10,
             "tree_id": 2,
@@ -752,15 +1359,18 @@
             "ar_name": null,
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
 
@@ -782,15 +1392,18 @@
             "ar_name": null,
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
 
@@ -812,15 +1425,18 @@
             "ar_name": null,
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
 
@@ -840,6 +1456,22 @@
             "code": "4211",
             "name": "Different Currency Revenues",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 3,
             "rght": 4,
             "tree_id": 10,
@@ -856,6 +1488,22 @@
             "code": "4212",
             "name": "Commissions Revenues",
             "ar_name": null,
+            "debit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "credit":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+            "balance":
+            {
+                "syp": 0.0,
+            "USD": 0.0
+            },
+
             "lft": 5,
             "rght": 6,
             "tree_id": 10,
@@ -1000,15 +1648,18 @@
             "code": "321121",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]
@@ -1028,15 +1679,18 @@
             "code": "321122",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]
@@ -1056,15 +1710,18 @@
             "code": "321123",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]
@@ -1084,15 +1741,18 @@
             "code": "321124",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]
@@ -1112,15 +1772,18 @@
             "code": "321125",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]
@@ -1140,15 +1803,18 @@
             "code": "321111",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]
@@ -1168,15 +1834,18 @@
             "code": "321112",
             "debit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "credit":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
             "balance":
             {
-                "syp": 0.0
+                "syp": 0.0,
+            "USD": 0.0
             },
 
             "coin": [1]

@@ -1,13 +1,14 @@
 from django.db import models
 from django.conf import settings
 from company.models import Company
-from account.models import Sub_account
+from account.models import Sub_account, Main_account, Account_type
 from international.models import Coin
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from common.models import BaseModel, SoftDeleteModel
 from django.conf import settings
 from django.utils.timezone import now
+from django.shortcuts import    get_object_or_404
 
 class Entry( BaseModel,SoftDeleteModel):
 
@@ -39,39 +40,49 @@ class Journal(BaseModel, SoftDeleteModel):
     def __str__(self):
         return str(self.entry.id)
 
+def main_account_parent(main_account,direction,coin,amount):
+    parent = get_object_or_404(Main_account, pk=main_account.parent.id)
+    if direction == '-1':
+        parent.credit[coin] += float(amount)
+    else :
+        parent.debit[coin] += float(amount)
+    parent.balance[coin] = float(parent.credit[coin])-float(parent.debit[coin])
+    parent.save()
+    if parent.parent:
+        main_account_parent(parent,direction,coin,amount)
+    else:
+        account_type = get_object_or_404(Account_type, pk=parent.account_type.id )
+        if direction == '-1':
+            account_type.credit[coin] += float(amount)
+        else :
+            account_type.debit[coin] += float(amount)
+        account_type.balance[coin] = float(account_type.credit[coin])-float(account_type.debit[coin])
+        account_type.save()
+
+
 
 @receiver(post_save, sender=Journal)
 def account_balance(sender, instance, created, **kwargs):
     if created:
-        account= instance.account
-        main_account = account.main_account
+        account = get_object_or_404(Sub_account, pk=instance.account.id)
+
+        main_account = get_object_or_404(Main_account, pk=account.main_account.id)
         coin = instance.coin.short_title
-        # if not type(account.credit) is dict:
-        #     account.credit={}
-        # if not type(account.debit) is dict:
-        #     account.debit={}
-        # if not type(account.balance) is dict:
-        #         account.balance={}
-
-        # if not coin  in account.credit.keys():
-        #     account.credit[coin] = 0.0
-        # if not coin  in account.debit.keys():
-        #     account.debit[coin] = 0.0
-
 
         if instance.direction == '-1':# credit    //{'syp': 69}
             # temp={}
             account.credit[coin] =float(account.credit[coin]) + float(instance.amount)
-            main_account.credit[coin] += float(instance.amount)
+            main_account.credit[coin] =float(main_account.credit[coin])+ float(instance.amount)
         else:
             account.debit[coin] =float(account.debit[coin]) + float(instance.amount)
-            main_account.debit[coin] += float(instance.amount)
+            main_account.debit[coin] =float(main_account.debit[coin])+ float(instance.amount)
         # print('float(account.credit[coin])', float(account.credit[coin]))
 
-        account.balance[coin] += float(account.credit[coin])-float(account.debit[coin])
-        main_account.balance[coin] +=float(account.credit[coin])-float(account.debit[coin])
+        account.balance[coin] = float(account.credit[coin])-float(account.debit[coin])
+        main_account.balance[coin] =float(main_account.credit[coin])-float(main_account.debit[coin])
         account.save()
         main_account.save()
+        main_account_parent(main_account,instance.direction,coin,instance.amount)
     # print('credit',instance.account.credit )
     # print('debit',instance.account.debit )
 

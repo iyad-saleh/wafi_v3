@@ -1,6 +1,6 @@
 {% load i18n %}
 {% for account in accounts %}
-<div class="  col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12 off">
+<div class="  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 off">
     <div class="card lobipanel-minimize">
         <div class="card-header">
             <div class="card-title">{{ account.name }}</div>
@@ -15,6 +15,9 @@
                         <th>{% trans "Arabic_name" %}</th>
                         <th>{% trans "nature" %}</th>
                         <th>{% trans "final" %}</th>
+                        <th>{% trans "debit" %}</th>
+                        <th>{% trans "credit" %}</th>
+                        <th>{% trans "balance" %}</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,6 +29,23 @@
                         <td>{{ account.ar_name }}</td>
                         <td>{{ account.get_nature_display }}</td>
                         <td>{{ account.get_final_display }}</td>
+                        <td>{% for key,value in account.debit.items %}
+                            {% if not value == 0 %}
+                                {{ key}} : {{ value }}<br/>
+                            {% endif %}
+                            {% endfor %}</td>
+                        <td>{% for key,value in account.credit.items %}
+                            {% if not value == 0 %}
+                                {{ key}} : {{ value }}<br/>
+                            {% endif %}
+                            {% endfor %}</td>
+                        <td>{% for key,value in account.balance.items %}
+                            {% if not value == 0 %}
+                                {{ key}} : {{ value }}<br/>
+                            {% endif %}
+                            {% endfor %}</td>
+
+
                         <td>
                             <button class="btn btn-primary btn-sm"
                             hx-get="{% url 'edit_account_type' pk=account.pk %}"
@@ -49,12 +69,16 @@
                                     <th>{% trans "name" %}</th>
                                     <th>{% trans "Arabic_name" %}</th>
                                     <th>{% trans "parent" %}</th>
+                                    <th>{% trans "debit" %}</th>
+                                    <th>{% trans "credit" %}</th>
+                                    <th>{% trans "balance" %}</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for main_account in account.Main_children.all %}
-                                <tr {% if not main_account.parent %} class="table-active" {% else %} class="table-success"{% endif %}>
+                                <tr {% if not main_account.parent %} class="table-active"
+                                {% else %} class="table-success"{% endif %}>
                                     <td>{{ main_account.code }} </td>
                                     <td>{{ main_account.name }} </td>
                                     <td>{{ main_account.ar_name }} </td>
@@ -64,6 +88,21 @@
                                              {{ account }} {{ account.ar_name }}
                                          {% endif %}
                                         </td>
+                                    <td>{% for key,value in main_account.debit.items %}
+                                        {% if not value == 0 %}
+                                            {{ key}} : {{ value }}<br/>
+                                        {% endif %}
+                                        {% endfor %}</td>
+                                    <td>{% for key,value in main_account.credit.items %}
+                                        {% if not value == 0 %}
+                                            {{ key}} : {{ value }}<br/>
+                                        {% endif %}
+                                        {% endfor %}</td>
+                                    <td>{% for key,value in main_account.balance.items %}
+                                        {% if not value == 0 %}
+                                            {{ key}} : {{ value }}<br/>
+                                        {% endif %}
+                                        {% endfor %}</td>
                                     <td><button class="btn btn-primary btn-sm" hx-get="{% url 'edit_main_account' pk=main_account.pk %}" hx-target="#dialog">Edit</button></td>
                                     {% if main_account.is_leaf_node %}
                                     <td>
@@ -86,6 +125,9 @@
                                 </tr>
                                 {% endfor %}
                             </tbody>
+                            <tr>
+                                <td colspan="5">xxxx</td>
+                            </tr>
                         </table>
                     </tr>
                 </tbody>

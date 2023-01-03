@@ -51,6 +51,9 @@ class Account_type(models.Model):#Assets liabilites Expenses income copyrights
     final = models.CharField(max_length=3, choices=(
                                             ('1','balance sheet'),
                                             ('2','gain and loss'),))
+    debit  =models.JSONField(default=dict, null=True, blank=True)
+    credit  =models.JSONField(default=dict,null=True, blank=True)
+    balance =models.JSONField(default=dict,null=True, blank=True)
     def __str__(self):
         return self.code+' - '+self.name
 
@@ -76,7 +79,7 @@ class Main_account(MPTTModel):
 
 
 class Sub_account(BaseModel):
-    main_account =TreeForeignKey('Main_account',   db_index=True,on_delete=models.CASCADE)
+    main_account =TreeForeignKey('Main_account',  db_index=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     ar_name = models.CharField(max_length=255, null=True, blank=True)
 
@@ -99,10 +102,27 @@ class Sub_account(BaseModel):
         return self.code+' - '+self.name
 
 
+# @receiver(post_save, sender=Main_account)
+# def account_balance(sender, instance, created, **kwargs):
+#     if not created:
+#         parent = Main_account.objects.filter
 
+#         main_account = get_object_or_404(Main_account, pk=account.main_account.id)
+#         coin = instance.coin.short_title
 
+#         if instance.direction == '-1':# credit    //{'syp': 69}
+#             # temp={}
+#             account.credit[coin] =float(account.credit[coin]) + float(instance.amount)
+#             main_account.credit[coin] += float(instance.amount)
+#         else:
+#             account.debit[coin] =float(account.debit[coin]) + float(instance.amount)
+#             main_account.debit[coin] += float(instance.amount)
+#         # print('float(account.credit[coin])', float(account.credit[coin]))
 
-
+#         account.balance[coin] += float(account.credit[coin])-float(account.debit[coin])
+#         main_account.balance[coin] +=float(account.credit[coin])-float(account.debit[coin])
+#         account.save()
+#         main_account.save()
 
 
 
